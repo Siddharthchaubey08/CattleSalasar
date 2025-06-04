@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CattelSalasarMAUI.Views.RegistrationPage"
+             Title="Registration Page" x:Name="registrationPage" BackgroundColor="White"
+             Shell.NavBarIsVisible="True">
+    <Grid RowDefinitions="55,*">
+
+        <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="auto" ColumnDefinitions="auto,*"  BackgroundColor="#a155e7">
+            <Grid Grid.Row="0" Grid.Column="0" ColumnDefinitions="auto,auto">
+                <Image   Grid.Row="0"  Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Start"  Source="backsignup.png" BackgroundColor="Transparent" 
+                     HeightRequest="35" WidthRequest="35" Margin="0,8,0,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ExecuteBackCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Grid.Row="0" Grid.Column="1" Margin="-3,13,0,0" FontSize="18" Text="Back" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" 
+                       FontAttributes="Bold" TextColor="White" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ExecuteBackCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            
+            <Label Grid.Row="0" Grid.Column="1" Text="Registration Page" FontSize="18" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White" Margin="-40,10,0,0" />
+
+        </Grid>
+        
+        <ScrollView  Grid.Row="1" Grid.Column="0">
+        <StackLayout>
+            <Frame x:Name="BasicInformation" IsVisible="{Binding BasicInformationVisible}" BackgroundColor="WhiteSmoke" IsClippedToBounds="True" HasShadow="True" Margin="10,20,10,10">
+                <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
+                   RowSpacing="5">
+
+                <Label Grid.Row="0" Text="Basic Information" FontAttributes="Bold" Margin="0, 8, 0, 0"  TextColor="Black" FontSize="20"></Label>
+                <!--UserName-->
+                <Grid  Grid.Row="1" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="Black" FontAttributes="Bold" Text="User Name" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding UserName}" ReturnType="Next" FontSize="15" x:Name="UserName" TextColor="Black" FontAttributes="Bold"
+                                   HeightRequest="80" Placeholder="User Name" Keyboard="Text"></Entry>
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+                <!--PhoneNumber-->
+                <Grid  Grid.Row="2" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Phone Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding PhoneNumber}" MaxLength="10" ReturnType="Next" FontSize="15" x:Name="PhoneNumber" TextColor="Black" FontAttributes="Bold" 
+                                   HeightRequest="80" Placeholder="Phone Number" Keyboard="Text"></Entry>
+                        </Grid>
+
+                    </Border>
+                </Grid>
+
+                <!--StateName-->
+                <Grid  Grid.Row="3" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="State Name" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" ItemsSource="{Binding GetStateList}" SelectedItem="{Binding SelectedState}" 
+                                 ItemDisplayBinding="{Binding StateName}" FontAttributes="Bold" FontSize="15" TextColor="IndianRed"
+                                 HeightRequest="80" x:Name="State" Title="--Select State--" >
+                                <!--SelectedIndexChanged="State_SelectedIndexChanged">-->
+
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--DistrictName-->
+                <Grid  Grid.Row="4" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="District Name" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" ItemsSource="{Binding GetDistrictList}" SelectedItem="{Binding SelectedDistrict}" 
+                             ItemDisplayBinding="{Binding DistrictName}" FontAttributes="Bold" FontSize="15" TextColor="IndianRed"
+                             HeightRequest="80" x:Name="District" Title="--Select District--" >
+                                <!--SelectedIndexChanged="State_SelectedIndexChanged">-->
+
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Email ID-->
+                <Grid  Grid.Row="5" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Email ID" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding EmailID}" x:Name="EmailID" 
+                                TextColor="Black" Placeholder="Email ID" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--AdharNumber-->
+                <Grid  Grid.Row="6" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Adhar Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding AdharNumber}" x:Name="AdharNumber" 
+                                TextColor="Black" Placeholder="Adhar Number" HeightRequest="80" MaxLength="12" FontAttributes="Bold" Keyboard="Numeric"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                 <!--PanCardNo-->
+                <Grid  Grid.Row="7" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="PanCard Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding PanCardNo}" x:Name="PanCardNo" 
+                                TextColor="Black" Placeholder="PanCard Number" HeightRequest="80"  FontAttributes="Bold"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--NameOfBank-->
+                <Grid  Grid.Row="8" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Name Of Bank" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding NameOfBank}" ReturnType="Next" FontSize="15" HeightRequest="80" 
+                                   x:Name="NameOfBank" FontAttributes="Bold" TextColor="Black" Placeholder="Name Of Bank"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--BankAccountNo-->
+                <Grid  Grid.Row="9" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Bank Account No" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding BankAccountNo}" ReturnType="Next" FontSize="15" HeightRequest="80" FontAttributes="Bold" x:Name="BankAccountNo" 
+                                   TextColor="Black" Placeholder="Bank Account Number" Keyboard="Numeric"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--IFSCNumber-->
+                <Grid  Grid.Row="10" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="IFSC Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding IFSCNumber}" ReturnType="Next" FontSize="15" HeightRequest="80" x:Name="IFSCNumber" FontAttributes="Bold" 
+                                   TextColor="IndianRed" Placeholder="IFSCNumber" ></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--Password--><!--
+                <Grid  Grid.Row="11" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Password" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding Password}" ReturnType="Next" FontSize="15" HeightRequest="80" x:Name="Password" FontAttributes="Bold"
+                                   TextColor="IndianRed" Placeholder="Password" ></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                --><!--ConfirmPassword--><!--
+                <Grid  Grid.Row="12" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Confirm Password" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding ConfirmPassword}" ReturnType="Next" FontSize="15" HeightRequest="80" x:Name="ConfirmPassword" FontAttributes="Bold"
+                                   TextColor="IndianRed" Placeholder="Confirm Password" ></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>-->
+
+               
+                <Button x:Name="Next" Grid.Row="13" Grid.Column="0"
+                     Command="{Binding SaveSignUpCommand}"
+                     Text="SignUp Details" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
+
+            </Grid>
+           
+            </Frame>
+            <Frame x:Name="ImageSections" IsVisible="{Binding ImageSectionsVisible}" BackgroundColor="WhiteSmoke" IsClippedToBounds="True" HasShadow="True" Margin="10,20,10,10">
+            
+                <Grid  RowDefinitions="auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
+                    RowSpacing="5">
+
+                <Label Grid.Row="0" Text="Image Details" FontAttributes="Bold" Margin="0, 8, 0, 0"  TextColor="Black" FontSize="20"></Label>
+
+                <!--Toggel Button--><!--
+                <Grid Grid.Row="1" Margin="0,10,0,10">
+                    <Border FlowDirection="MatchParent" Stroke="Black" HorizontalOptions="FillAndExpand"  Margin="0,-5,0,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,20,20" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand">
+                            <Button Text="Camera" TextColor="Black" Grid.Column="0"
+                      Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CameraToggelClickedCommand}"
+                      CommandParameter="CameraSelect" Margin="0,0,-20,0" BorderColor="Black" BackgroundColor="{Binding CameraToggelBg}" WidthRequest="198"
+                      CornerRadius="20"/>
+
+                            <Button Text="Gallery" TextColor="Black" Grid.Column="1"
+                      Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.GalleryToggelClickedCommand}"
+                      CommandParameter="GallerySelect" Margin="-20,0,0,0" BorderColor="Black" BackgroundColor="{Binding GalleryToggelBg}" WidthRequest="198"
+                      CornerRadius="20"/>
+                        </Grid>
+                    </Border>
+
+                </Grid>-->
+
+                <!--Selfiee Photo-->
+                <Grid  Grid.Row="2" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                    <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid RowDefinitions="*">
+                                <Image Grid.Row="0" Source="{Binding SelfieeImage}" Grid.Column="0" VerticalOptions="Center" MinimumHeightRequest="50" Aspect="AspectFit" />
+
+                        </Grid>
+                    </Border>
+                        <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0"  FontAttributes="Bold" Text="Selfiee Photo" TextColor="White" 
+                     Command="{Binding PhotoCaptureCommand}"
+                     CommandParameter="Selfiee Photo"/>
+
+                </Grid>
+
+                <!--Aadhar Photo-->
+                <Grid  Grid.Row="3" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                    <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400"  HorizontalOptions="FillAndExpand" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid RowDefinitions="*">
+                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding AadharPhotoImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                        </Grid>
+                    </Border>
+                        <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Aadhar Photo" TextColor="White" 
+                         Command="{Binding PhotoCaptureCommand}"
+                         CommandParameter="Aadhar Photo"/>
+
+                </Grid>
+
+                <!--PanCard Photo-->
+                <Grid  Grid.Row="4" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                    <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid RowDefinitions="*">
+                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding PanCardImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                        </Grid>
+                    </Border>
+                        <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="PanCard Photo" TextColor="White" 
+                             Command="{Binding PhotoCaptureCommand}"
+                             CommandParameter="PanCard Photo"/>
+
+                </Grid>
+
+                <!--Passbook or cheque photo-->
+                <Grid  Grid.Row="5" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                    <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid RowDefinitions="*">
+                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding PassbookAndChequeImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                            <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                        </Grid>
+                    </Border>
+                        <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Passbook or Cheque Photo" TextColor="White" 
+                         Command="{Binding PhotoCaptureCommand}"
+                         CommandParameter="Passbook or Cheque Photo"/>
+
+                </Grid>
+
+                <!--IsVisible="{Binding ImageSaveToDbVisible}"-->
+                <Button Grid.Row="13" Grid.Column="0" IsVisible="True" FontAttributes="Bold" Command="{Binding ImageUploadToServerCommand}"
+                     CommandParameter="{Binding .}"  Text="Save Image" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
+
+            </Grid>
+
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+    </Grid>
+</ContentPage>

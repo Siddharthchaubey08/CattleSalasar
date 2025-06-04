@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CattelSalasarMAUI.ViewModels"
+             x:Class="CattelSalasarMAUI.CustomComponents.AnimalDetailsComponent">
+    <ScrollView>
+        <StackLayout>
+            <!--<StackLayout Margin="0,10,0,10" IsVisible="{Binding AnimalDetailsSection}">-->
+            <StackLayout Margin="0,10,0,10" IsVisible="False">
+                <Frame BackgroundColor="WhiteSmoke" IsVisible="{Binding AnimalDetailsSection}" IsClippedToBounds="True" HasShadow="True" Margin="10,0,10,0">
+                    <Grid x:Name="BasicInformation" IsVisible="{Binding AnimalDetailsSection}"
+                         RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
+                         RowSpacing="5">
+
+                <Label Grid.Row="0" Text="Animal Details" FontAttributes="Bold" Margin="0, 8, 0, 0"  TextColor="Black" FontSize="20"></Label>
+                <!--LeadNumber-->
+                <Grid  Grid.Row="1" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="LeadNumber" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                                    <Entry Grid.Column="1" ReturnType="Next" FontSize="16" Text="{Binding LeadNumber}" x:Name="LeadNumber" 
+                                TextColor="IndianRed" IsReadOnly="True" Placeholder="Enter Breed Name" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--ViewAnimalNumber-->
+                <Grid  Grid.Row="2" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="View Animal Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="16" Text="{Binding CurrentAnimalNumber}" x:Name="CurrentAnimalNumber" 
+                                TextColor="IndianRed" Placeholder="Enter Breed Name" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Type of Animal-->
+                <Grid  Grid.Row="3" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="Black" FontAttributes="Bold" Text="Type Of Animals" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedAnimalType}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="TypeOfAnimals" Title="Select Animal Type" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Goat</x:String>
+                                        <x:String>Sheep</x:String>
+                                        <x:String>Horse</x:String>
+                                        <x:String>Mare</x:String>
+                                        <x:String>Pony</x:String>
+                                        <x:String>Pig</x:String>
+                                        <x:String>Yak</x:String>
+                                        <x:String>Mule</x:String>
+                                        <x:String>Cattle</x:String>
+                                        <x:String>Buffalo</x:String>
+                                        <x:String>Camel</x:String>
+                                        <x:String>Donkey</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+                <!--Category Type-->
+                <Grid  Grid.Row="4" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Category Type" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedCategoryType}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="CategoryType" Title="Select Category Type" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Crossbreed</x:String>
+                                        <x:String>Exotic</x:String>
+                                        <x:String>Indigenous</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+
+                    </Border>
+                </Grid>
+
+                <!--Switch Of Tail-->
+                <Grid  Grid.Row="5" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Switch Of Tail" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedSwitchOfTail}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="SwitchOfTail" Title="Select Switch Of Tail" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>No Switch</x:String>
+                                        <x:String>Black</x:String>
+                                        <x:String>White</x:String>
+                                        <x:String>Brown</x:String>
+                                        <x:String>Bi-colored</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--Sex-->
+                <Grid  Grid.Row="6" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Sex" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedSex}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="SelectedSex" Title="Select Sex" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Male</x:String>
+                                        <x:String>Female</x:String>
+                                        
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--BodyColour-->
+                <Grid  Grid.Row="7" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Body Colour" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding BodyColour}" x:Name="BodyColour" 
+                                   TextColor="Black" Placeholder="Enter BodyColour" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--BreedName-->
+                <Grid  Grid.Row="8" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Breed Name" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding BreedName}" x:Name="BreedName" 
+                                 TextColor="Black" Placeholder="Enter Breed Name" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--ApproxAgeOfAnimal-->
+                <Grid  Grid.Row="9" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Approx Age Of Animal" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding ApproxAgeOfAnimal}" MaxLength="2" x:Name="ApproxAgeOfAnimal" 
+                           TextColor="Black" Placeholder=" Approx Age Of Animal" HeightRequest="80" FontAttributes="Bold" Keyboard="Numeric" />
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--MilkingStatus-->
+                <Grid  Grid.Row="10" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Milking Status" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" SelectedItem="{Binding MilkingStatus}" FontSize="15" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="MilkingStatus" Title=" Select Milking Status" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Milking</x:String>
+                                        <x:String>Dry</x:String>
+                                        <x:String>Na</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Milking Status(Litter Per Day)-->
+                <Grid  Grid.Row="11" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Milking Status(Litter Per Day)" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding MilkYield}" FontAttributes="Bold" Placeholder="Milking status- (Litter per day)" HeightRequest="80" ReturnType="Next" FontSize="15" MaxLength="2" x:Name="CustomerAge" TextColor="IndianRed" Keyboard="Numeric" />
+                            
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--PregnancyStatus-->
+                <Grid  Grid.Row="12" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Pregnancy Status" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedPregnancyStatus}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="PregnancyStatu" Title="Select Pregnancy Status" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Yes</x:String>
+                                        <x:String>No</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Vaccination Done(Yes/No)-->
+                <Grid  Grid.Row="13" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Vaccination Done(Yes/No)" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedVaccination}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="PregnancyStatus" Title="Select Vaccination" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Yes</x:String>
+                                        <x:String>No</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <!--OtherIdentificationMark-->
+                <Grid  Grid.Row="14" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Other Identification Mark" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding OtherIdentificationMark}" FontAttributes="Bold" Placeholder="Other Identification Mark" HeightRequest="80" ReturnType="Next" FontSize="15" x:Name="OtherIdentificationMark" TextColor="IndianRed" Keyboard="Text" />
+                        
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--DrContactName-->
+                <Grid  Grid.Row="15" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Doctor Name" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding DrContactName}" ReturnType="Next" FontSize="15" HeightRequest="80" FontAttributes="Bold" x:Name="DrContactName" TextColor="Black" Placeholder="Enter DrContact Name"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Doctor Contact Number-->
+                <Grid  Grid.Row="16" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Doctor Contact Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding DrContactNo}" ReturnType="Next" FontSize="15" HeightRequest="80" x:Name="DrContactNo" MaxLength="10" FontAttributes="Bold" TextColor="IndianRed" Placeholder="Doctor Contact Number" Keyboard="Numeric"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--RegistrationNo-->
+                <Grid  Grid.Row="17" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Registration Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding RegistrationNumber}" ReturnType="Next" FontSize="15" HeightRequest="80" x:Name="RegistrationNumber" MaxLength="10" FontAttributes="Bold" TextColor="IndianRed" Placeholder="Registration Number" Keyboard="Numeric"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--HealthCertificateIssueDate-->
+                <Grid  Grid.Row="18" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Veterinary Health Certificate Issue Date" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <DatePicker Grid.Column="1" Date="{Binding HealthCertificateIssueDate}" 
+                                 FontAttributes="Bold" FontSize="15" TextColor="IndianRed"
+                                HeightRequest="80" x:Name="HealthCertificateIssueDate" >
+                                <!--SelectedIndexChanged="State_SelectedIndexChanged">-->
+
+                            </DatePicker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Type Of Tag-->
+                <Grid  Grid.Row="19" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Type Of Tag" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedTypeOfTagging}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="TypeOfTagging" Title="Select Type Of Tagging" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Metallic</x:String>
+                                        <x:String>PVC</x:String>
+                                        <x:String>RFI</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Ownership Details-->
+                <Grid  Grid.Row="20" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Ownership Details" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding SelectedOwnershipDetails}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="OwnershipDetails" Title="Select Ownership Details" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Individual</x:String>
+                                        <x:String>DairyFarms</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--TagNumber-->
+                <Grid  Grid.Row="21" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Tag Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding TagNumber}" ReturnType="Next" FontSize="15" x:Name="TagNumber"  TextColor="Black" HeightRequest="80" FontAttributes="Bold" Placeholder="Enter Tag Number" ></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Payment UTR No-->
+                <Grid Grid.Row="22" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Payment UTR Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Green" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding PaymentUTRNumber}" ReturnType="Next" FontSize="15" FontAttributes="Bold" HeightRequest="80" x:Name="PaymentUTRNumber" TextColor="Black" Placeholder="Payment UTR Number"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Premium Rate in %-->
+                <Grid Grid.Row="23" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Premium Rate(Percentage %)" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Green" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" x:Name="PremiumRate" Text="{Binding PremiumRate}" TextChanged="PremiumRate_TextChanged" ReturnType="Next" FontSize="15" MaxLength="5" FontAttributes="Bold" 
+                                   HeightRequest="80" TextColor="Black" Placeholder="Premium Rate(Percentage %)" Keyboard="Numeric" />
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--SumInsured-->
+                <Grid Grid.Row="24" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Sum Insured" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Green" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                                    <Entry Grid.Column="1" Text="{Binding SumInsured}" TextChanged="PremiumRate_TextChanged" ReturnType="Next" FontSize="15"
+                                           x:Name="SumInsured" FontAttributes="Bold" HeightRequest="80" TextColor="Black" Placeholder="Enter Sum Insured" Keyboard="Numeric"></Entry>
+                        
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--PremiumAmount-->
+                <Grid Grid.Row="25" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Premium Amount" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" Text="{Binding PremiumAmount}" IsEnabled="False" ReturnType="Next" FontSize="15" x:Name="PremiumAmount" FontAttributes="Bold" HeightRequest="80" TextColor="Black" Placeholder="Enter Premium Amount" Keyboard="Numeric"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--FarmerPremiumPercentage/GovPremiumPercentage-->
+                <Frame Grid.Row="26" HasShadow="True" BorderColor="IndianRed" CornerRadius="15" BackgroundColor="BlanchedAlmond" >
+                    <Grid RowDefinitions="*,*,*" ColumnDefinitions="*"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                            HeightRequest="65"  >
+                        <Grid Margin="10,0,0,0" Grid.Row="0" Grid.Column="0"  RowDefinitions="*" ColumnDefinitions="0.50*,0.50*" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label Grid.Column="0" FontSize="12.5" FontAttributes="Bold" TextColor="#323232" Text="Farmer Premium Share:" />
+                            <Label x:Name="FarmerPremiumPercentage" Text="{Binding FarmerPremiumPercentage}" Margin="0,-1,0,0" Grid.Column="1" FontSize="14"
+                                FontAttributes="Bold" TextColor="IndianRed"  />
+                        </Grid>
+                        <Grid Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" RowDefinitions="*" ColumnDefinitions="0.50*,0.50*" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label Grid.Column="0" FontSize="12.5" FontAttributes="Bold" TextColor="#323232" Text="Gov. Premium Share :" />
+                            <Label x:Name="GovPremiumPercentage" Text="{Binding GovPremiumPercentage}" Margin="0,-1,0,0" Grid.Column="1" FontSize="14" FontAttributes="Bold" 
+                                TextColor="IndianRed" />
+                        </Grid>
+                        <Grid Margin="10,0,0,0" Grid.Row="2" Grid.Column="0" RowDefinitions="*" ColumnDefinitions="0.50*,0.50*" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label Grid.Column="0" FontSize="12.5" FontAttributes="Bold" TextColor="#323232" Text="Central Premium Share :" />
+                            <Label x:Name="CentralSharePercentage" Text="{Binding CentralSharePercentage}" Margin="0,-1,0,0" Grid.Column="1" FontSize="14" FontAttributes="Bold" 
+                                TextColor="IndianRed" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+                
+                <Button x:Name="Next" Grid.Row="27" Grid.Column="0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=SaveAnimalDetailsCommand}"
+                   CommandParameter="{Binding TestComman}" Text="Go To Image Section" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
+
+                    </Grid>
+
+                 </Frame>
+            </StackLayout>
+
+            <!--<StackLayout Margin="0,10,0,10" IsVisible="{Binding ImageSection}">-->
+            <StackLayout Margin="0,10,0,10" IsVisible="True">
+                <Frame Grid.Row="1" BackgroundColor="WhiteSmoke" IsClippedToBounds="True"  HasShadow="True" Margin="10,0,10,0">
+                    <Grid x:Name="ImageSections" IsVisible="True"
+                       RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
+                       RowSpacing="5">
+                        
+                        <Label Grid.Row="0" Text="Image Details" FontAttributes="Bold" Margin="0, 8, 0, 0"  TextColor="Black" FontSize="20"></Label>
+                       
+                        <!--Toggel Button-->
+                        <Grid Grid.Row="1" Margin="0,10,0,10">
+                            <Border FlowDirection="MatchParent" Stroke="Black" HorizontalOptions="FillAndExpand"  Margin="0,-5,0,0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20,20,20,20" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand">
+                                    <Button Text="Camera" TextColor="Black" Grid.Column="0"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CameraToggelClickedCommand}"
+                                            CommandParameter="CameraSelect" Margin="0,0,-20,0" BorderColor="Black" BackgroundColor="{Binding CameraToggelBg}" WidthRequest="198"
+                                            CornerRadius="20"/>
+
+                                    <Button Text="Gallery" TextColor="Black" Grid.Column="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.GalleryToggelClickedCommand}"
+                                            CommandParameter="GallerySelect" Margin="-20,0,0,0" BorderColor="Black" BackgroundColor="{Binding GalleryToggelBg}" WidthRequest="198"
+                                            CornerRadius="20"/>
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                        <!--Clear Tag Number Visible Photo-->
+                        <Grid  Grid.Row="2" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Source="{Binding FirstImage}" Grid.Column="0" VerticalOptions="Center" MinimumHeightRequest="50" Aspect="AspectFit" />
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0"  FontAttributes="Bold" Text="Clear Tag Number Visible Photo" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Clear Tag Number Visible Photo"/>
+
+                        </Grid>
+
+                        <!--Right Side (Right side of the Animal)-->
+                        <Grid  Grid.Row="3" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400"  HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                        <Image Grid.Row="0" Grid.Column="0" Source="{Binding SecondImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Right Side (Right side of the Animal)" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Right Side (Right side of the Animal)"/>
+
+                        </Grid>
+
+                        <!--Left Side (Right side of the Animal)-->
+                        <Grid  Grid.Row="4" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding ThirdImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Left Side (Right side of the Animal)" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Left Side (Right side of the Animal)"/>
+
+                        </Grid>
+
+                        <!--Front of Animal-->
+                        <Grid  Grid.Row="5" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding FourthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Front of Animal" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Front of Animal"/>        
+
+                        </Grid>
+
+                        <!--Back side of Animal-->
+                        <Grid  Grid.Row="6" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Source="{Binding FivethImage}" Grid.Column="0" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Back side of Animal" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Back side of Animal"/>        
+
+                        </Grid>
+
+                        <!--Along with the Owner/ Proposer-->
+                        <Grid  Grid.Row="7" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding SixthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Along with the Owner/ Proposer" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Along with the Owner/ Proposer"/>
+
+                        </Grid>
+
+                        <!--Veterinary Health Certificate-->
+                        <Grid  Grid.Row="8" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding SeventhImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Veterinary Health Certificate" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Veterinary Health Certificate"/>
+
+                        </Grid>
+
+                        <!--Proposal Form-->
+                        <Grid  Grid.Row="9" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding EighthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Proposal Form" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="Proposal Form"/>
+
+                        </Grid>
+
+                        <!--Aadhar Card-->
+                        <Grid  Grid.Row="10" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding NinthImage}" VerticalOptions="Center" Aspect="AspectFit"  MinimumHeightRequest="50" />
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Aadhar Card" TextColor="White" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                    CommandParameter="Aadhar Card" />
+
+                        </Grid>
+
+                        <!--UTR Image-->
+                        <Grid  Grid.Row="11" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding TenthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                                <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="UTR Image" TextColor="White" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                CommandParameter="UTR Image"/>
+
+                        </Grid>
+                        <!--Upload Files-->
+                        <Grid  Grid.Row="12" RowDefinitions="*" Padding="0,0,0,10">
+                            
+                            <Frame BackgroundColor="WhiteSmoke" HasShadow="True" BorderColor="Gray" CornerRadius="15">
+
+                                <Grid RowDefinitions="*,*">
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                        x:Name="lblFileName" FontSize="16" TextColor="IndianRed"
+                                        Margin="10,5,10,2" FontAttributes="Bold">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="$ Selected File:" TextColor="Black" FontAttributes="Bold" />
+                                                <Span Text="{Binding SelectedPDFFileName}" TextColor="IndianRed" FontAttributes="Bold" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+
+                                    <Button Grid.Row="1"  Grid.Column="0" BackgroundColor="CornflowerBlue" HeightRequest="40" FontAttributes="Bold" Text="Upload Files" TextColor="White" 
+                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                         CommandParameter="Upload PDF File" Margin="30,25,30,15" VerticalOptions="EndAndExpand"/>
+                                </Grid>
+                            </Frame>
+                            <!--<Border Grid.Row="0" StrokeThickness="2" Stroke="IndianRed" FlowDirection="MatchParent" MinimumHeightRequest="80" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,8,8,8" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*,*">
+                                    
+                                   <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                           x:Name="lblFileName" FontSize="16" TextColor="IndianRed" Margin="10,5,10,2" FontAttributes="Bold" Text="{Binding SelectedPDFFileName}" />
+                                    <Button Grid.Row="1"  Grid.Column="0" BackgroundColor="CornflowerBlue" HeightRequest="40" FontAttributes="Bold" Text="Upload Files" TextColor="White" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=PhotoCaptureCommand}"
+                                        CommandParameter="Upload PDF File" Margin="30,5,30,15"/>
+                                </Grid>
+                            </Border>-->
+                            
+
+                        </Grid>
+                        <!--IsVisible="{Binding ImageSaveToDbVisible}"-->
+                        <Button Grid.Row="13" Grid.Column="0" IsVisible="True" FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=SaveAnimalImageDetailsCommand}"
+                            Text="Save Local Image" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
+
+                        <Button  Grid.Row="14" Grid.Column="0" x:Name="GotoImageSave" FontAttributes="Bold" IsVisible="{Binding ImageSaveToServerVisible}" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=ImageSaveServerCommand}"
+                             Text="Go To Save Image" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#308098" TextColor="#FFF"/>
+                    </Grid>
+
+                </Frame>
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentView>

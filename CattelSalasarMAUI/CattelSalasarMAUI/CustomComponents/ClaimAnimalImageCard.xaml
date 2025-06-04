@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CattelSalasarMAUI.CustomComponents.ClaimAnimalImageCard"
+             xmlns:local="clr-namespace:CattelSalasarMAUI.ViewModels"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout>
+            <StackLayout Margin="0,10,0,0">
+                <Frame BackgroundColor="WhiteSmoke"  IsClippedToBounds="True" HasShadow="True" Margin="10,0,10,0">
+                    <Grid x:Name="BasicInformation" RowDefinitions="auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
+                      RowSpacing="5">
+
+                        <Label Grid.Row="0" Text="Claim Animal Details" FontAttributes="Bold" Margin="0, 8, 0, 0"  TextColor="Black" FontSize="20"></Label>
+                        <!--LeadNumber-->
+                        <Grid  Grid.Row="1" RowDefinitions="20,40">
+                            <Label Grid.Row="0" Margin="10,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="LeadNumber" />
+                                        <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="0.15*,0.90*">
+                                    <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                                    <Entry Grid.Column="1" ReturnType="Next" FontSize="16" Text="{Binding LeadNumber}" x:Name="LeadNumber" 
+                                        TextColor="IndianRed" IsReadOnly="True" Placeholder="Enter Breed Name" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <!--ClaimProposalId-->
+                        <Grid  Grid.Row="2" RowDefinitions="20,40">
+                            <Label Grid.Row="0" Margin="10,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Claim Proposal Id" />
+                                        <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="0.15*,0.90*">
+                                    <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                                    <Entry Grid.Column="1" ReturnType="Next" FontSize="16" Text="{Binding ClaimProposalId}" x:Name="CurrentAnimalNumber" 
+                                      TextColor="IndianRed" Placeholder="Enter Breed Name" IsReadOnly="True" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <!--TagNumber-->
+                        <Grid  Grid.Row="3" RowDefinitions="20,40">
+                            <Label Grid.Row="0" Margin="10,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Tag Number" />
+                                        <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="0.15*,0.90*">
+                                    <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                                    <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding TagNumber}" x:Name="BreedName" 
+                                         TextColor="IndianRed" Placeholder="Enter Breed Name" IsReadOnly="True" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <!--Type Of Animal-->
+                        <Grid  Grid.Row="4" RowDefinitions="20,40">
+                            <Label Grid.Row="0" Margin="10,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Type Of Animal" />
+                                        <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="0.15*,0.90*">
+                                    <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                                    <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding TypeOfAnimal}" x:Name="BodyColour" 
+                                        TextColor="IndianRed" Placeholder="Enter BodyColour"  IsReadOnly="True" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+
+                </Frame>
+            </StackLayout>
+              <!--Image Section-->
+            <StackLayout Margin="0,10,0,10" >
+                <Frame Grid.Row="1" BackgroundColor="WhiteSmoke" IsClippedToBounds="True"  HasShadow="True" Margin="10,0,10,0">
+                    <Grid x:Name="ImageSections" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
+                    RowSpacing="5">
+
+                        <Label Grid.Row="0" Text="Image Details" FontAttributes="Bold" Margin="0, 8, 0, 0"  TextColor="Black" FontSize="20"></Label>
+
+                        <!--Toggel Button-->
+                        <Grid Grid.Row="1" Margin="0,10,0,10">
+                            <Border FlowDirection="MatchParent" Stroke="Black" HorizontalOptions="FillAndExpand"  Margin="0,-5,0,0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20,20,20,20" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="auto,auto" HorizontalOptions="CenterAndExpand">
+                                    <Button Text="Camera" TextColor="Black" Grid.Column="0"
+                                          Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CameraToggelClickedCommand}"
+                                          CommandParameter="CameraSelect" Margin="0,0,-20,0" BorderColor="Black" BackgroundColor="{Binding CameraToggelBg}" WidthRequest="198"
+                                          CornerRadius="20"/>
+
+                                    <Button Text="Gallery" TextColor="Black" Grid.Column="1"
+                                          Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.GalleryToggelClickedCommand}"
+                                          CommandParameter="GallerySelect" Margin="-20,0,0,0" BorderColor="Black" BackgroundColor="{Binding GalleryToggelBg}" WidthRequest="198"
+                                          CornerRadius="20"/>
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                        
+                        <!--Clear Tag Number Visible Photo-->
+                        <Grid  Grid.Row="2" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Source="{Binding FirstImage}" Grid.Column="0" VerticalOptions="Center" MinimumHeightRequest="50" Aspect="AspectFit" />
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0"  FontAttributes="Bold" Text="Clear Tag Number Visible Photo" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Clear Tag Number Visible Photo"/>
+
+                        </Grid>
+
+                        <!--Right Side (Right side of the Animal)-->
+                        <Grid  Grid.Row="3" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400"  HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding SecondImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Right Side (Right side of the Animal)" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Right Side (Right side of the Animal)"/>
+
+                        </Grid>
+
+                        <!--Left Side (Right side of the Animal)-->
+                        <Grid  Grid.Row="4" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding ThirdImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Left Side (Right side of the Animal)" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Left Side (Right side of the Animal)"/>
+
+                        </Grid>
+
+                        <!--Front of Animal-->
+                        <Grid  Grid.Row="5" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding FourthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Front of Animal" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Front of Animal"/>
+
+                        </Grid>
+
+                        <!--Back side of Animal-->
+                        <Grid  Grid.Row="6" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Source="{Binding FivethImage}" Grid.Column="0" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" BackgroundColor="CadetBlue" HeightRequest="40" Grid.Column="0" FontAttributes="Bold" Text="Back side of Animal" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Back side of Animal"/>
+
+                        </Grid>
+
+                        <!--Along with the Owner/ Proposer-->
+                        <Grid  Grid.Row="7" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding SixthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Along with the Owner/ Proposer" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Along with the Owner/ Proposer"/>
+
+                        </Grid>
+
+                        <!--Veterinary Health Certificate-->
+                        <Grid  Grid.Row="8" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding SeventhImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Veterinary Health Certificate" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Veterinary Health Certificate"/>
+
+                        </Grid>
+
+                        <!--Proposal Form-->
+                        <Grid  Grid.Row="9" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding EighthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Proposal Form" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="Proposal Form"/>
+
+                        </Grid>
+
+                        <!--Aadhar Card-->
+                        <Grid  Grid.Row="10" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding NinthImage}" VerticalOptions="Center" Aspect="AspectFit"  MinimumHeightRequest="50" />
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Aadhar Card" TextColor="White" 
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                                 CommandParameter="Aadhar Card" />
+
+                        </Grid>
+
+                        <!--UTR Image-->
+                        <Grid  Grid.Row="11" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding TenthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="UTR Image" TextColor="White" 
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                             CommandParameter="UTR Image"/>
+
+                        </Grid>
+
+                        <!--Post-Mortem Report-->
+                        <Grid  Grid.Row="12" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding EleventhImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Post-Mortem Report" TextColor="White" 
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                                 CommandParameter="Post-Mortem Report"/>
+
+                        </Grid>
+
+                        <!--Beneficiary Bank Passbook-->
+                        <Grid  Grid.Row="13" RowDefinitions="auto,*" Padding="-1,0,0,0">
+
+                            <Border Grid.Row="0" Stroke="Black" FlowDirection="MatchParent" MaximumHeightRequest="400" HorizontalOptions="FillAndExpand" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,0,8,0" />
+                                </Border.StrokeShape>
+                                <Grid RowDefinitions="*">
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding TwelthImage}" VerticalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="50" />
+
+                                    <!--<Button Grid.Row="1" Margin="5,0,5,10" Grid.Column="0" Text="Button_1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"/>-->
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Row="1" Margin="0,10,0,10" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="40" FontAttributes="Bold" Text="Beneficiary Bank Passbook" TextColor="White" 
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=PhotoCaptureCommand}"
+                                 CommandParameter="Beneficiary Bank Passbook"/>
+
+                        </Grid>
+                        
+                        <!--IsVisible="{Binding ImageSaveToDbVisible}"-->
+                        <Button Grid.Row="14" Grid.Column="0" IsVisible="True" FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type local:UploadClaimIntimationViewModel}}, Path=ImageUploadToServerCommand}"
+                          CommandParameter="{Binding .}"  Text="Save Image" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
+
+                        <Button Grid.Row="14" Grid.Column="0" IsVisible="{Binding LocalSaveButtomVisible}" FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SaveAnimalImageDetailsCommand}"
+                         Text="Save Local Image" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
+
+                        <Button  Grid.Row="14" Grid.Column="0" x:Name="GotoImageSave" FontAttributes="Bold" IsVisible="{Binding ImageSaveToServerVisible}" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClaimAnimalViewModel}}, Path=ImageSaveServerCommand}"
+                          Text="Go To Save Image" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#308098" TextColor="#FFF"/>
+                    </Grid>
+
+                </Frame>
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentView>

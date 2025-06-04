@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CattelSalasarMAUI.Views.ProposalDetails.UploadPreviewPage"
+             xmlns:compont="clr-namespace:CattelSalasarMAUI.CustomComponents"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="Upload Page" x:Name="uploadPreviewPage" BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout x:Name="CardGrid" IsVisible="true">
+            <Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="*"  VerticalOptions="StartAndExpand">
+                <Button Grid.Row="1" Text="Refress" Command="{Binding GetUploadCardListMethodCommand}" IsVisible="False" />
+               
+        
+                <ScrollView Grid.Row="2">
+                    <StackLayout>
+                        <compont:DataCardView BindingContext="{Binding CardViewPropClass}" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout Grid.Row="2" IsVisible="{Binding PageLoaderEnable}" HeightRequest="550" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid IsVisible="{Binding PageLoaderEnable}" RowDefinitions="auto,auto" VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator Color="Purple" HeightRequest="45" WidthRequest="45"  FlowDirection="RightToLeft" Grid.Row="0" BackgroundColor="Transparent"
+                             IsRunning="True"
+                             IsVisible="True" />
+                        <ActivityIndicator Color="Orange" HeightRequest="65" WidthRequest="65" FlowDirection="LeftToRight" Grid.Row="0" BackgroundColor="Transparent"
+                             IsRunning="True"
+                             IsVisible="True" />
+                        <ActivityIndicator Color="Green" HeightRequest="90" WidthRequest="90" FlowDirection="LeftToRight" BackgroundColor="Transparent" Grid.Row="0"
+                             IsRunning="True" IsVisible="True">
+
+                        </ActivityIndicator>
+                        <Label Text="Loading ..." Grid.Row="1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="red"/>
+                    </Grid>
+
+                </StackLayout>
+            </Grid>
+
+
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CattelSalasarMAUI.Views.ClaimIntimation.ClaimAnimalCardPage"
+             xmlns:compont="clr-namespace:CattelSalasarMAUI.CustomComponents"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="Claim Animal Card Page" x:Name="claimAnimalCardPage" BackgroundColor="White">
+
+    <ScrollView>
+            <Grid RowDefinitions="*,auto" ColumnDefinitions="*"  VerticalOptions="StartAndExpand">
+               
+
+                <ScrollView IsVisible="{Binding ClaimAnimalCardVisible}" Grid.Row="1">
+                    <StackLayout >
+                    <compont:ClaimAnimalDataCard BindingContext="{Binding ClaimAnimalCardView}" />
+                    <!--<compont:ClaimAnimalDataCard BindingContext="{Binding ClaimAnimalCardView}" />-->
+                    <!--<compont:ClaimAnimalImageCard BindingContext="{Binding ClaimAnimalImageCardView}" />-->
+                    </StackLayout>
+                    
+                </ScrollView>
+                <StackLayout Grid.Row="1" IsVisible="{Binding ClaimCardPageLoader}" Margin="0,200,0,0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid RowDefinitions="auto,auto" VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator Color="Purple" HeightRequest="45" WidthRequest="45"  FlowDirection="RightToLeft" Grid.Row="0" BackgroundColor="Transparent"
+                              IsRunning="True"
+                              IsVisible="True" />
+                        <ActivityIndicator Color="Orange" HeightRequest="65" WidthRequest="65" FlowDirection="LeftToRight" Grid.Row="0" BackgroundColor="Transparent"
+                          IsRunning="True"
+                          IsVisible="True" />
+                        <ActivityIndicator Color="Green" HeightRequest="90" WidthRequest="90" FlowDirection="LeftToRight" BackgroundColor="Transparent" Grid.Row="0"
+                             IsRunning="True" IsVisible="True">
+
+                        </ActivityIndicator>
+                        <Label Text="Loading ..." Grid.Row="1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="red"/>
+                    </Grid>
+
+                </StackLayout>
+                <!--<ScrollView IsVisible="{Binding ClaimAnimalImageVisible}" Grid.Row="1">
+                    <StackLayout >
+                        --><!--<compont:AnimalDataCard BindingContext="{Binding ClaimAnimalCardView}" />--><!--
+                        <compont:ClaimAnimalImageCard BindingContext="{Binding ClaimAnimalImageCardView}" />
+                    </StackLayout>
+                    
+                </ScrollView>-->
+            
+            </Grid>
+
+
+    </ScrollView>
+</ContentPage>

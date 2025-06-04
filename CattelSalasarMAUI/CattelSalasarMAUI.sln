@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CattelSalasarMAUI", "CattelSalasarMAUI\CattelSalasarMAUI.csproj", "{AEE3B414-A27A-4878-AAA2-E70308B37DCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEE3B414-A27A-4878-AAA2-E70308B37DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE3B414-A27A-4878-AAA2-E70308B37DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE3B414-A27A-4878-AAA2-E70308B37DCF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AEE3B414-A27A-4878-AAA2-E70308B37DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE3B414-A27A-4878-AAA2-E70308B37DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE3B414-A27A-4878-AAA2-E70308B37DCF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB9D62E0-A7EA-4AE8-BE28-6674964AEC2F}
+	EndGlobalSection
+EndGlobal

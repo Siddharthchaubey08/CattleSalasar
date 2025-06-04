@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CattelSalasarMAUI.Views.ProposalDetails.EditPreviewPage"
+             xmlns:compont="clr-namespace:CattelSalasarMAUI.CustomComponents"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:behaviors="clr-namespace:CattelSalasarMAUI.Helper"
+             Title="Edit Preview Page" BackgroundColor="White" x:Name="editPreviewPage">
+
+    <ScrollView>
+        <StackLayout x:Name="CardGrid" IsVisible="true">
+            <Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="*"  VerticalOptions="StartAndExpand">
+                <StackLayout Grid.Row="0" Margin="0,10,0,0">
+                    <Frame BorderColor="Black" CornerRadius="10" Margin="10,0,10,0" BackgroundColor="White">
+                        <!--<Grid ColumnDefinitions="140,90,auto" Margin="0,-13,0,-12">-->
+                            <!--<Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="15" TextColor="#323232" Text="Survey Date" FontAttributes="Bold"/>
+                                        <Span Text="*" FontAttributes="Bold"  FontSize="16" TextColor="Red" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+                            <!--DateSelected="ProposalDate_DateSelected"-->
+                            <!--<DatePicker Grid.Row="0" Grid.Column="1" Format="dd/MM/yyyy" FontSize="15" x:Name="ProposalDate" Date="{Binding ProposalDate}"
+                                TextColor="#adadad" >
+                                <DatePicker.Behaviors>
+                                    <toolkit:EventToCommandBehavior
+                                        EventName = "DateSelected"
+                                        Command="{Binding GetCardListMethodCommand}" 
+                                        CommandParameter="EditPage" />
+                                </DatePicker.Behaviors>
+                            </DatePicker>-->
+                            <!--<Button Grid.Row="0" Grid.Column="2" Text="Search" Command="{Binding SearchCommand}" />-->
+                           <Grid ColumnDefinitions="*,auto,10">
+                                <Border Grid.Column="0" Stroke="Black" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="8,0,8,0" />
+                                    </Border.StrokeShape>
+                                <!--<Entry x:Name="CalendarEntryBox" Margin="20,0,0,0" HeightRequest="40"  Text="{Binding SelectedDate}"
+                                       Placeholder="Select a date" TextColor="IndianRed" FontSize="17"
+                                       IsReadOnly="True" FontAttributes="Bold" 
+                                       HorizontalOptions="FillAndExpand" >
+                                    <Entry.Behaviors>
+                                        <toolkit:EventToCommandBehavior
+                                              EventName = "DateSelected"
+                                              Command="{Binding GetCardListMethodCommand}" 
+                                              CommandParameter="EditPage" />
+                                    </Entry.Behaviors>
+                                </Entry>-->
+
+                                <Entry x:Name="CalendarEntryBox" Margin="20,0,0,0" HeightRequest="40"
+                                       Text="{Binding SelectedDate, Mode=TwoWay}"
+                                       Placeholder="Select a date" TextColor="IndianRed" FontSize="17"
+                                       IsReadOnly="True" FontAttributes="Bold"
+                                       HorizontalOptions="FillAndExpand">
+                                    <Entry.Behaviors>
+                                        <toolkit:EventToCommandBehavior
+                                            EventName="TextChanged"
+                                            Command="{Binding GetCardListMethodCommand}" 
+                                            CommandParameter="EditPage" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </Border>
+
+                            <!-- Image Button to open calendar Command="{Binding FocusDatePickerCommand}"-->
+                                <Image Grid.Column="1" Source="calander.gif" IsAnimationPlaying="True"
+                                     WidthRequest="50"
+                                     HeightRequest="50" >
+                                    <Image.GestureRecognizers>
+                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"  />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <!-- Date Picker (initially hidden) -->
+                                <DatePicker Grid.Column="2" x:Name="ProposalDate"
+                                    DateSelected="OnDateSelected" >
+                                <DatePicker.Behaviors>
+                                    <toolkit:EventToCommandBehavior
+                                     EventName = "DateSelected"
+                                     Command="{Binding GetCardListMethodCommand}" 
+                                     CommandParameter="EditPage" />
+                                </DatePicker.Behaviors>
+                            </DatePicker>
+                           
+                        </Grid>
+                       
+                        
+                    </Frame>
+                </StackLayout>
+                <BoxView Grid.Row="1" BackgroundColor="IndianRed" Margin="0,5,0,0" HeightRequest="1.5" />
+                <!--PageLoader-->
+                <StackLayout Grid.Row="2" IsVisible="{Binding PageLoaderEnable}" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid RowDefinitions="auto,auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,200,0,0">
+                        <ActivityIndicator Color="Purple" HeightRequest="45" WidthRequest="45"  FlowDirection="RightToLeft" Grid.Row="0" BackgroundColor="Transparent"
+                            IsRunning="True"
+                            IsVisible="True" />
+                        <ActivityIndicator Color="Orange" HeightRequest="65" WidthRequest="65" FlowDirection="LeftToRight" Grid.Row="0" BackgroundColor="Transparent"
+                            IsRunning="True"
+                            IsVisible="True" />
+                        <ActivityIndicator Color="Green" HeightRequest="90" WidthRequest="90" FlowDirection="LeftToRight" BackgroundColor="Transparent" Grid.Row="0"
+                            IsRunning="True" IsVisible="True">
+
+                        </ActivityIndicator>
+                        <Label Text="Loading ..." Grid.Row="1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="red"/>
+                    </Grid>
+                </StackLayout>
+                
+                <!--DataCardView-->
+                <ScrollView Grid.Row="2">
+                    <StackLayout>
+                        <compont:DataCardView BindingContext="{Binding EditDataCardView}" />
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+           
+            
+        </StackLayout>
+
+    </ScrollView>
+
+
+</ContentPage>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CattelSalasarMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CattelSalasarMAUI.Views"
+    xmlns:local1="clr-namespace:CattelSalasarMAUI.Views.ProposalDetails"
+    xmlns:local2="clr-namespace:CattelSalasarMAUI.Views.ClaimIntimation"
+    xmlns:component="clr-namespace:CattelSalasarMAUI.CustomComponents"
+    Shell.FlyoutBehavior="Flyout"
+    Title="CattelSalasarMAUI"
+    x:Name="myShell"
+    Shell.TitleColor="White"
+    Shell.ForegroundColor="white"
+    Shell.BackgroundColor="#a155e7"
+    Shell.TabBarBackgroundColor="#dbbff6"
+    Shell.TabBarUnselectedColor="#2e2e2e"
+    Shell.TabBarTitleColor="MediumVioletRed"
+    Shell.TabBarForegroundColor="MediumVioletRed"
+    FlyoutIsPresented="False"
+    FlyoutBackgroundColor="White"
+    FlyoutBackdrop="Black">
+
+    <!-- Shell Resources for Styling -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FlyoutItemTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <DataTemplate x:Key="FlyoutItemTemplate">
+                <Grid Padding="10">
+                    <Label Text="{Binding Title}" Style="{StaticResource FlyoutItemTitleStyle}" />
+                   
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!-- Set the ItemTemplate -->
+    <Shell.ItemTemplate>
+        <StaticResource Key="FlyoutItemTemplate" />
+    </Shell.ItemTemplate>
+
+    <!-- Flyout Header -->
+    <Shell.FlyoutHeader>
+        <component:HeaderContent />
+    </Shell.FlyoutHeader>
+
+    <!-- Flyout Items -->
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Main" Icon="home.png">
+        <ShellContent x:Name="homePage" Icon="home.png"
+                      ContentTemplate="{DataTemplate local:HomePage}"
+                      Route="homePage"
+                      Title="Home Page" />
+    </FlyoutItem>
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Create Proposal" Icon="home.png" >
+        <ShellContent Route="createProposal" Icon="home.png" 
+                      ContentTemplate="{DataTemplate local1:CreateProposal}"
+                      Title="Create Proposal" />
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Upload Proposal" Icon="home.png" >
+            <ShellContent Route="uploadPreviewPage" Icon="tabfeed.png"
+                      ContentTemplate="{DataTemplate local1:UploadPreviewPage}"
+                      Title="Upload Proposal" />
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Edit Proposal" Icon="home.png" >
+        <ShellContent Route="editPreviewPage" Icon="tabfeed.png"
+                      ContentTemplate="{DataTemplate local1:EditPreviewPage}"
+                      Title="Edit Proposal" />
+    </FlyoutItem>
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Claim Intimation"  FlyoutIcon="tabfeed.png">
+        <ShellContent Route="cardClaimIntimation" Icon="tabfeed.png"
+                      ContentTemplate="{DataTemplate local2:CardClaimIntimation}"
+                      Title="Claim Intimation" />
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Upload Claim Intimation"  FlyoutIcon="tabfeed.png">
+        <ShellContent Route="uploadClaimIntimation1" Icon="tabfeed.png"
+                      ContentTemplate="{DataTemplate local2:UploadClaimIntimationCard}"
+                      Title="Upload Claim Intimation" />
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Testing File Upload"  FlyoutIcon="tabfeed.png">
+        <ShellContent Route="testingPage" Icon="tabfeed.png"
+                   ContentTemplate="{DataTemplate local:TestingPage}"
+                   Title="Upload Claim Intimation" />
+    </FlyoutItem>
+
+    <!-- Logout Menu Item -->
+    <!--<MenuItem Text="Logout" 
+              Command="{Binding ExecuteLogout}" />-->
+    <Shell.FlyoutFooter>
+        <Grid RowDefinitions="*,*" BackgroundColor="White" Margin="0,-30,0,0" Padding="30" >
+            <Label Grid.Row="0" Text="Application Version- 1.1 V" FontSize="16" TextColor="IndianRed" FontAttributes="Bold"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,10,0,0" />
+            <Button Grid.Row="1" Text="User_Logout" FontSize="16"
+                TextColor="white" FontAttributes="Bold"
+                Command="{Binding ExecuteLogout}" 
+                BackgroundColor="#a155e7" />
+        </Grid>
+    </Shell.FlyoutFooter>
+
+
+</Shell>
+

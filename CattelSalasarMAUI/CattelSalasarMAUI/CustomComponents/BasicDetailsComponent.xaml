@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CattelSalasarMAUI.ViewModels"
+             x:Class="CattelSalasarMAUI.CustomComponents.BasicDetailsComponent" BackgroundColor="White">
+
+    <StackLayout Margin="0,10,0,10">
+        <Frame BackgroundColor="WhiteSmoke" IsClippedToBounds="True" HasShadow="True" Margin="10,0,10,0">
+            <Grid x:Name="BasicInformation" IsVisible="true"
+            RowDefinitions="auto,60,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
+              RowSpacing="5">
+
+                <Label Grid.Row="0" Text="Basic Information" FontAttributes="Bold" Margin="0, 8, 0, 0"  TextColor="Black" FontSize="20"></Label>
+                <!--Survey Date-->
+                <Grid  Grid.Row="1" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="Black" FontAttributes="Bold" Text="Survey Date" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <DatePicker Grid.Column="1" Format="dd/MM/yyyy" Date="{Binding SurveyDate}" FontSize="15" x:Name="SurveyDate" HeightRequest="80" FontAttributes="Bold" TextColor="IndianRed" ></DatePicker>
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+                <!--Survey Time-->
+                <Grid  Grid.Row="2" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Survey Time" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <TimePicker Grid.Column="1" Time="{Binding SurveyTime}" FontSize="15"  x:Name="SurveyTime" HeightRequest="60" FontAttributes="Bold" TextColor="IndianRed" ></TimePicker>
+                        </Grid>
+
+                    </Border>
+                </Grid>
+
+                <!--CustomerName-->
+                <Grid  Grid.Row="3" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Customer Name" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding CustomerName}" ReturnType="Next" FontSize="15" x:Name="CustomerName" TextColor="Black" FontAttributes="Bold" HeightRequest="80" Placeholder="Customer Name" Keyboard="Text"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--CustomerGender-->
+                <Grid  Grid.Row="4" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Gender" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" FontSize="15" SelectedItem="{Binding Gender}" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="CustomerGender" Title="Select Customer Gender" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Male</x:String>
+                                        <x:String>Female</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Customer FatherName/ Husband Name-->
+                <Grid  Grid.Row="5" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Customer FatherName/ Husband Name" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" ReturnType="Next" FontSize="15" Text="{Binding FatherName}" x:Name="FatherHusbandName" 
+                               TextColor="Black" Placeholder="Father Name/Husband Name" HeightRequest="80" FontAttributes="Bold" Keyboard="Text"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Category-->
+                <Grid  Grid.Row="6" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Customer Category" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" SelectedItem="{Binding Category}" FontSize="15" HeightRequest="80" TextColor="IndianRed" FontAttributes="Bold" x:Name="CustomerCategory" Title=" Select Customer Category" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>General</x:String>
+                                        <x:String>OBC</x:String>
+                                        <x:String>SC</x:String>
+                                        <x:String>ST</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Family Status-->
+                <Grid  Grid.Row="7" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Family Status" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" SelectedItem="{Binding FamilyStatus}" FontSize="15" FontAttributes="Bold" HeightRequest="80" TextColor="IndianRed" x:Name="FamilyStatus" Title="Family Status" >
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>APL</x:String>
+                                        <x:String>BPL</x:String>
+                                        <x:String>Other</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Customer DOB-->
+                <Grid  Grid.Row="8" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Customer DOB / Age" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <DatePicker Grid.Column="1" Date="{Binding DateOfBirth}" TextColor="IndianRed" Format="dd/MM/yyyy" PropertyChanged="CustomerDOB_PropertyChanged" 
+                                        HeightRequest="80" FontSize="15" FontAttributes="Bold" x:Name="CustomerDOB" />
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Age-->
+                <Grid  Grid.Row="9" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Customer Age (years)" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding Age}" FontAttributes="Bold" Placeholder="Age" HeightRequest="80" ReturnType="Next" FontSize="15"
+                                   IsReadOnly="True" x:Name="CustomerAge" TextColor="IndianRed" Keyboard="Numeric" />
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Customer Mobile Number-->
+                <Grid  Grid.Row="10" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Customer Mobile number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding MobileNumber}" ReturnType="Next" FontSize="15" HeightRequest="80" x:Name="CustomerMobile" MaxLength="10" FontAttributes="Bold" TextColor="Black" Placeholder="Customer Mobile number" Keyboard="Numeric"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Customer Address-->
+                <Grid  Grid.Row="11" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Customer Address" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding Address}" ReturnType="Next" FontSize="15" HeightRequest="80" FontAttributes="Bold" x:Name="CustomerAddress" TextColor="Black" Placeholder="Customer Address"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Aadhar Card Number-->
+                <Grid  Grid.Row="12" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Aadhar Card Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding AdharNo}" ReturnType="Next" FontSize="15" HeightRequest="80" x:Name="AadharNumber" MaxLength="12" FontAttributes="Bold" TextColor="IndianRed" Placeholder="Aadhar Card Number" Keyboard="Numeric"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--State-->
+                <Grid  Grid.Row="13" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="State" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" ItemsSource="{Binding GetStateList}" SelectedItem="{Binding SelectedState}" 
+                                    ItemDisplayBinding="{Binding StateName}" FontAttributes="Bold" FontSize="15" TextColor="IndianRed"
+                                    HeightRequest="80" x:Name="State" Title="--Select State--" >
+                                <!--SelectedIndexChanged="State_SelectedIndexChanged">-->
+
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--District-->
+                <Grid  Grid.Row="14" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="District" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" ItemsSource="{Binding GetDistrictList}"  
+                                   SelectedItem="{Binding SelectedDistrict}" ItemDisplayBinding="{Binding DistrictName}"
+                                    FontSize="15" TextColor="IndianRed" FontAttributes="Bold" HeightRequest="80" x:Name="District" Title="--Select District--" >
+                                <!--SelectedIndexChanged="District_SelectedIndexChanged"-->
+
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Block-->
+                <Grid  Grid.Row="15" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Block" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Picker Grid.Column="1" ItemsSource="{Binding GetBlockList}" SelectedItem="{Binding SelectedTehsil}" ItemDisplayBinding="{Binding TehsilName}" FontSize="15" FontAttributes="Bold" HeightRequest="80" TextColor="IndianRed" x:Name="Block" Title="--Select Block--" >
+                                <!--SelectedIndexChanged="Block_SelectedIndexChanged"-->
+
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Pincode-->
+                <Grid  Grid.Row="16" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="PinCode" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding PinCode}" ReturnType="Next" FontSize="15" x:Name="Pincode"  TextColor="Black" HeightRequest="80" MaxLength="6" FontAttributes="Bold" Placeholder="Enter Your Pin Code" Keyboard="Numeric"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--NameOfBank-->
+                <Grid Grid.Row="17" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Name Of Bank" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Green" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+
+                            <Entry Grid.Column="1" Text="{Binding NameOfBank}" ReturnType="Next" FontSize="15" FontAttributes="Bold" HeightRequest="80" x:Name="NameOfBank" TextColor="Black" Placeholder="Name Of Bank"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Loan Account Number-->
+                <Grid Grid.Row="18" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Loan Account Number" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Green" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" Text="{Binding LoanAccountNo}" ReturnType="Next" FontSize="15" FontAttributes="Bold" HeightRequest="80" TextColor="Black" Placeholder="Loan Account Number" Keyboard="Numeric"></Entry>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Loan amount (Rs)-->
+                <Grid Grid.Row="19" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Loan amount (Rs)" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Green" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Entry Grid.Column="1" Text="{Binding LoanAmount}" ReturnType="Next" FontSize="15" x:Name="LoanAmount" FontAttributes="Bold" HeightRequest="80" TextColor="Black" Placeholder="Loan amount (Rs)" Keyboard="Numeric"></Entry>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--No Of Cattle's Funded-->
+                <Grid Grid.Row="20" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="No Of Cattle's Funded" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" SelectedItem="{Binding NoOfCattleFunded}" IsEnabled="{Binding CattleToBeInsuredEnable}" TextColor="IndianRed" HeightRequest="80" FontAttributes="Bold" FontSize="15" Title="Select Number of Cattle's Funded" >
+                                <Picker.Items>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                    <!-- Add more numbers as needed -->
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Number Of Cattle To Be Insured-->
+                <Grid Grid.Row="21" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Number Of Cattle To Be Insured" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" SelectedItem="{Binding CattleToBeInsured}" IsEnabled="{Binding CattleToBeInsuredEnable}" TextColor="IndianRed" FontAttributes="Bold" HeightRequest="80" FontSize="15" Title="Select Number of Cattle's Funded" >
+                                <Picker.Items>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                    <!-- Add more numbers as needed -->
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Payment Received-->
+                <Grid Grid.Row="22" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Payment Received" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" SelectedItem="{Binding PaymentReceived}" x:Name="PaymentReceived" FontSize="15" TextColor="IndianRed" FontAttributes="Bold" HeightRequest="80" Title="Select Payment receive" SelectedIndexChanged="PaymentReceived_SelectedIndexChanged">
+                                <Picker.Items>
+                                    <x:String>Yes</x:String>
+                                    <x:String>No</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Payment Mode-->
+                <Grid Grid.Row="23" RowDefinitions="20,40" x:Name="PaymentModeSection">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Payment Mode" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Green" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" SelectedItem="{Binding PaymentMode}" x:Name="PaymentMode" FontSize="15" FontAttributes="Bold" TextColor="IndianRed" HeightRequest="80" Title="Select Payment Mode" >
+                                <Picker.Items>
+                                    <x:String>NEFT/IMPS</x:String>
+                                    <x:String>UPI</x:String>
+                                    <x:String>Net Banking</x:String>
+                                    <x:String>Debit Card / Credit Card</x:String>
+                                    <x:String>Net Banking</x:String>
+                                    <x:String>Direct Cash deposit at Bank (with Insurance Company Account)</x:String>
+                                    <x:String>Through CSC</x:String>
+                                    <x:String>Though CSP</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Policy Period-->
+                <Grid Grid.Row="24" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Policy Period" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" SelectedItem="{Binding PolicyPeriod}" x:Name="policyPeriod" FontSize="15" TextColor="IndianRed" FontAttributes="Bold" HeightRequest="80" Title="Select Policy Period" >
+                                <Picker.Items>
+                                    <x:String>One Year</x:String>
+                                    <x:String>Two Year</x:String>
+                                    <x:String>Three Year</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!--Get All Scheme Data-->
+                <Grid Grid.Row="25" RowDefinitions="20,40">
+                    <Label Grid.Row="0" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontSize="15" TextColor="black" FontAttributes="Bold" Text="Get All Scheme Data" />
+                                <Span Text="*" FontAttributes="Bold"  FontSize="15" TextColor="Red" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border Grid.Row="1" Stroke="Black" FlowDirection="MatchParent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8,0,8,0" />
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="0.15*,0.90*">
+                            <Image Grid.Column="0" Source="survey.png" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="35" />
+                            <Picker Grid.Column="1" ItemsSource="{Binding GetAllSchemeList}" SelectedItem="{Binding SelectedScheme}" 
+                                    ItemDisplayBinding="{Binding SchemeName}"
+                                    x:Name="GetAllScheam" FontSize="15" Title="Number of Scheam" TextColor="IndianRed" FontAttributes="Bold" HeightRequest="80">
+
+                         </Picker>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+
+                <Button x:Name="Next" Grid.Row="26" Grid.Column="0"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalDetailsViewModel}}, Path=BasicDetailsCommand}"
+                        CommandParameter="{Binding PageCommandParamiter}"
+                        Text="Go to Animal Details" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
+
+            </Grid>
+
+        </Frame>
+    </StackLayout>
+
+
+</ContentView>

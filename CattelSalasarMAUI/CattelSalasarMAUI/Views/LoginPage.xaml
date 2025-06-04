@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CattelSalasarMAUI.Views.LoginPage"
+             Title="LoginPage" BackgroundColor="White" x:Name="loginPage">
+
+    <ScrollView BackgroundColor="White">
+        <StackLayout x:Name="absLayout" Margin="0,0,0,0" IsVisible="True" BackgroundColor="White">
+            <Grid RowDefinitions="auto,*"  HorizontalOptions="FillAndExpand" IsVisible="True" BackgroundColor="White"  VerticalOptions="FillAndExpand" >
+               
+                <Image Grid.Row="0" Grid.Column="0"  Margin="0,1,0,0" Source="@drawable/loginimage.jpeg"  Aspect="AspectFill" HeightRequest="150" ></Image>
+
+                <Frame Grid.Row="1" Grid.Column="0"  BackgroundColor="White" Margin="20,30,20,120" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" >
+                    <Grid RowDefinitions="36,18,auto,auto,auto,auto,auto,auto"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15" Padding="20" BackgroundColor="White">
+                       
+                        <Label Grid.Row="0"  Text="User Login" FontSize="28" FontAttributes="Bold" TextColor="#1C375C" HorizontalOptions="CenterAndExpand"></Label>
+                        <Label Grid.Row="1" Margin="-4,-15,0,0" Text="Login in to Account" FontSize="12" FontAttributes="Bold" TextColor="red"  HorizontalOptions="CenterAndExpand"></Label>
+
+                        <Frame Grid.Row="2" Grid.Column="0" Style="{DynamicResource LoginBorderStyleLoginPage}" Margin="0,10,0,0">
+                            <Grid ColumnDefinitions="Auto,*" RowDefinitions="45" ColumnSpacing="15">
+                                <Image Grid.Column="0" Source="mobile.png" Aspect="AspectFit" HeightRequest="25" WidthRequest="25"/>
+                                <Entry x:Name="userNameEntry" Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand"  Style="{StaticResource SearchEntryStyle}" 
+                                       Placeholder="User Name" Text="{Binding UserName}"  ReturnType="Next" HeightRequest="140" Margin="0,0,10,-10"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="0" Style="{DynamicResource LoginBorderStyleLoginPage}" Margin="0,0,0,0">
+                            <Grid ColumnDefinitions="Auto,*" RowDefinitions="45" ColumnSpacing="15">
+                                <Image Grid.Column="0" Source="password.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="26"/>
+                                <Entry  x:Name="Password" Text="{Binding Password}" Grid.Column="1" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent" Style="{StaticResource SearchEntryStyle}" 
+                                        Placeholder="Password" IsPassword="True" ReturnType="Next" HeightRequest="140" Margin="0,0,10,-10" />
+                            </Grid>
+                        </Frame>
+                        
+                        <!--Remember Me-->
+                        <Grid Grid.Row="4" RowDefinitions="*" ColumnDefinitions="0.10*,0.90*" HorizontalOptions="CenterAndExpand">
+                            <CheckBox Grid.Row="0" Color="red" Grid.Column="0" IsChecked="{Binding IsRemember}" />
+                            <Label Grid.Row="0" TextColor="Black" Grid.Column="1" Text="Remember Me" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" />
+                        </Grid>
+                        
+                        <Button Grid.Row="5" Text="Login" Command="{Binding LoginCommand}" BackgroundColor="{DynamicResource IndigoBlueColor}" x:Name="Login" CornerRadius="20" Margin="0,10,0,0"></Button>
+                        <Grid Grid.Row="6" RowDefinitions="*" ColumnDefinitions="*" HorizontalOptions="CenterAndExpand">
+                            <Button Grid.Row="0" x:Name="forgetLabel" Command="{Binding ExecuteRegistrationCommand}" Text="Sign up?" TextColor="Blue" FontSize="15" BackgroundColor="Transparent" />
+
+                        </Grid>
+
+                    </Grid>
+                </Frame>
+
+                <!--PageLoder-->
+                <StackLayout IsVisible="{Binding LoginLoder}" Grid.Row="1" Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="Center" x:Name="popupLoadingView1" Padding="10,0" >
+                    <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="150">
+                        <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="LightPink" IsRunning="True" WidthRequest="90" HeightRequest="90">
+
+                        </ActivityIndicator>
+
+                    </StackLayout>
+                </StackLayout>
+
+            </Grid>
+
+
+
+
+            <!--<ContentView x:Name="popupLoadingView" BackgroundColor="White" Padding="0, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <StackLayout x:Name="stackIncrese1" Orientation="Vertical" HeightRequest="150" WidthRequest="300" BackgroundColor="White">
+                        <Label x:Name="labelenter" Text="Enter User Mail id" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                        <Entry x:Name="useridValidationEntry" Keyboard="Email" IsPassword="True" Placeholder="Enter User id Here" TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ></Entry>
+                        <Button x:Name="UpdateButton" Command="{Binding ExecuteRegistration}" BackgroundColor="#ff6600" Text="Check" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            
+            <ContentView x:Name="passwordView" BackgroundColor="White" Padding="0, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <StackLayout x:Name="stackIncrese" Orientation="Vertical" HeightRequest="180" WidthRequest="300" BackgroundColor="White">
+                        <Label x:Name="passwordLabel" Text="Password" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                        <Entry x:Name="firstPassword"  ReturnType="Next" Keyboard="Email" IsPassword="True" Placeholder="Enter User id Here" TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ></Entry>
+                        <Entry x:Name="secondPassword" ReturnType="Done" Keyboard="Email" IsPassword="True" Placeholder="Enter User id Here" TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ></Entry>
+                        <Label x:Name="warningLabel" Text="" IsVisible="False" TextColor="Blue" FontSize="15" BackgroundColor="Transparent" />
+                        <Button x:Name="submitButton"  Command="{Binding ExecuteRegistration}" BackgroundColor="#ff6600" Text="Update" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>-->
+           
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>
