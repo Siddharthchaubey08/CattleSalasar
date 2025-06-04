@@ -5,8 +5,8 @@
              x:Class="CattelSalasarMAUI.CustomComponents.AnimalDetailsComponent">
     <ScrollView>
         <StackLayout>
-            <!--<StackLayout Margin="0,10,0,10" IsVisible="{Binding AnimalDetailsSection}">-->
-            <StackLayout Margin="0,10,0,10" IsVisible="False">
+            <!--<StackLayout Margin="0,10,0,10" IsVisible="False">-->
+            <StackLayout Margin="0,10,0,10" IsVisible="{Binding AnimalDetailsSection}">
                 <Frame BackgroundColor="WhiteSmoke" IsVisible="{Binding AnimalDetailsSection}" IsClippedToBounds="True" HasShadow="True" Margin="10,0,10,0">
                     <Grid x:Name="BasicInformation" IsVisible="{Binding AnimalDetailsSection}"
                          RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
@@ -695,9 +695,9 @@
 
                  </Frame>
             </StackLayout>
-
-            <!--<StackLayout Margin="0,10,0,10" IsVisible="{Binding ImageSection}">-->
-            <StackLayout Margin="0,10,0,10" IsVisible="True">
+            
+            <!--<StackLayout Margin="0,10,0,10" IsVisible="True">-->
+            <StackLayout Margin="0,10,0,10" IsVisible="{Binding ImageSection}">
                 <Frame Grid.Row="1" BackgroundColor="WhiteSmoke" IsClippedToBounds="True"  HasShadow="True" Margin="10,0,10,0">
                     <Grid x:Name="ImageSections" IsVisible="True"
                        RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*"
