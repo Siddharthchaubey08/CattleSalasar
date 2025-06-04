@@ -930,7 +930,7 @@
                                         Margin="10,5,10,2" FontAttributes="Bold">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="$ Selected File:" TextColor="Black" FontAttributes="Bold" />
+                                                <Span Text="$ Selected File: " TextColor="Black" FontAttributes="Bold" />
                                                 <Span Text="{Binding SelectedPDFFileName}" TextColor="IndianRed" FontAttributes="Bold" />
                                             </FormattedString>
                                         </Label.FormattedText>

@@ -35,7 +35,7 @@
                                     <RoundRectangle CornerRadius="15,15,15,15" />
                                 </Border.StrokeShape>
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowDefinitions="auto,*,auto"  ColumnDefinitions="*,*" >
-                                    <Label Grid.Row="0" Grid.Column="1" Text="Application Version(1.1Claim)" FontSize="12"  Margin="0,0,10,0" TextColor="IndianRed" FontAttributes="Bold"
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Application Version(1.3 V)" FontSize="12"  Margin="0,0,10,0" TextColor="IndianRed" FontAttributes="Bold"
                                       HorizontalOptions="End" VerticalOptions="StartAndExpand" />
 
                                     <Label x:Name="LoginUserName" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Margin="0,0,0,5" FontSize="20" FontFamily="RalewayMedium" 
