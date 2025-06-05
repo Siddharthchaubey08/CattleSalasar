@@ -406,8 +406,8 @@ namespace CattelSalasarMAUI.ViewModels
 
             }
 
-           
-           // var data = await _editProposalService.GetEditProposalList(PropId);
+            
+            // var data = await _editProposalService.GetEditProposalList(PropId);
             //Image Details
             foreach (var item1 in data.proposalImages)
             {
