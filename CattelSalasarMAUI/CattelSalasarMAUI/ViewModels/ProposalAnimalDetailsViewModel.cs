@@ -150,6 +150,7 @@ namespace CattelSalasarMAUI.ViewModels
             //AnimalDetails.ImageSection = true;
             AnimalDetails.AnimalDetailsSection = true;
             AnimalDetails.ImageSection = false;
+            AnimalDetails.ImageSaveToDbVisible = true; //Proposal Animal 
             UploadProposalDetailsView.AnimalDetailsSection = true;
             UploadProposalDetailsView.ImageSection = false;
             UploadProposalDetailsView.ImageSaveToServerVisible = true;
@@ -441,9 +442,9 @@ namespace CattelSalasarMAUI.ViewModels
                 // Define the base URL
                 //var urlbase = GlobalVariables.appUrl+ $"api/FileManager/api/image/{imageName}";
                 // var imageUrl = $"http://1.22.180.122:9191/api/FileManager/api/image/{imageName}";
-                //var imageUrl = $"http://adeptinfo.co.in:4329/api/FileManager/api/image/{imageName}";
+                var imageUrl = $"http://adeptinfo.co.in:4329/api/FileManager/api/image/{imageName}";
                 //var imageUrl = $"https://api.salasarservices.in/api/FileManager/api/image/{imageName}";
-                var imageUrl = $"http://13.200.151.26:8085/api/FileManager/api/image/{imageName}";  //Clint_API
+               // var imageUrl = $"http://13.200.151.26:8085/api/FileManager/api/image/{imageName}";  //Clint_API
 
                 // Create an HttpClient instance to fetch the image
                 using (var httpClient = new HttpClient())

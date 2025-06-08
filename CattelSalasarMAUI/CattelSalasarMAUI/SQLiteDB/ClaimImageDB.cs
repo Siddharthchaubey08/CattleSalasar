@@ -117,6 +117,41 @@ namespace CattelSalasarMAUI.SQLiteDB
             return null;
         }
 
+        public async Task<string> DeleteImageDetailsByAnimalId(string LeadNumber, string ClaimProposalId, string TagNumber)
+        {
+            try
+            {
+                await Init();
+
+               // string animalIdString = AnimalId.ToString().Trim();
+
+                // Fetch data from the database
+                var ImageData = await Database.Table<ClaimIntimationImageModel>().ToArrayAsync();
+
+                // Check if ImageData is null
+                if (ImageData == null)
+                {
+                    throw new InvalidOperationException("Query result is null.");
+                }
+                var result = ImageData.Where(x => x.LeadNumber == LeadNumber && x.TagNumber == TagNumber);
+                //  var result = ImageData.Where(x =>x.LeadNumber==LeadNumber && x.ClaimIntimationId == ProposalId && x.CompassDegrees == animalIdString).ToList();
+                //  var result = ImageData.Where(x =>x.LeadNumber==LeadNumber && x.ClaimProposalId == ClaimProposalId && x.TagNumber == TagNumber).ToList();
+                if (result != null)
+                {
+                    var data= await Database.DeleteAsync(result.FirstOrDefault(x => x.LeadNumber == LeadNumber && x.TagNumber == TagNumber));
+                    return "Delete data Successfuly";
+                }
+                
+                return "";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetImageDetailsByAnimalId: {ex.Message}");
+                throw;
+            }
+        }
+
+
         public async Task<List<ClaimIntimationImageModel>> GetImageDetailsByAnimalId(int ProposalId, int AnimalId)
         {
             try

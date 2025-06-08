@@ -5,6 +5,7 @@ using CattelSalasarMAUI.Services.IService;
 using CattelSalasarMAUI.SQLiteDB;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.Controls;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using static System.Net.Mime.MediaTypeNames;
@@ -13,6 +14,8 @@ namespace CattelSalasarMAUI.ViewModels
 {
     public partial class UploadClaimIntimationViewModel : BaseViewModel, IQueryAttributable
     {
+        #region PropertyResigion
+
         private string _leadNumber;
         public string LeadNumber
         {
@@ -94,7 +97,7 @@ namespace CattelSalasarMAUI.ViewModels
                 }
             }
         }
-
+    #endregion
 
         [ObservableProperty]
         ObservableCollection<UploadClaimCardModel> _getClaimIntimationCardList;
@@ -107,6 +110,10 @@ namespace CattelSalasarMAUI.ViewModels
             UploadClaimAnimalImageCard = new ClaimAnimalImageCardClass();
             UploadClaimAnimalImageCard.LocalSaveButtomVisible = false;
             ClaimCardPageLoader = true;
+
+            UploadClaimAnimalImageCard.ClaimDetailsPageVisible = true;
+            UploadClaimAnimalImageCard.ClaimCardPageLoader = false;
+           
             OnAppringMethod();
         }
 
@@ -202,6 +209,7 @@ namespace CattelSalasarMAUI.ViewModels
             try
             {
                 var ImageList1 =await _claimImageDB.GetClaimIntimationImage();
+               // var ImageList1 =await _claimImageDB.DeleteImageDetailsByAnimalId();
                 var ImageList = ImageList1.Where(x => x.LeadNumber == LeadNumber && x.TagNumber == TagNumber).ToList();
 
                 //var ImageList =await _claimImageDB.GetUploadImageDetails(LeadNumber, ClaimProposalId, TagNumber);
@@ -257,7 +265,7 @@ namespace CattelSalasarMAUI.ViewModels
                     else if (item.ImageCapson == "Aadhar card")
                     {
                         UploadClaimAnimalImageCard.NinthImage = imageSource;
-
+                        
                     }
                     else if (item.ImageCapson == "UTR Image")
                     {
@@ -277,12 +285,11 @@ namespace CattelSalasarMAUI.ViewModels
                     }
                     else if (item.ImageCapson == "Upload File")
                     {
-
                         //UploadClaimAnimalImageCard.TwelthImage = imageSource;
 
                     }
                 }
-
+                
 
             }
             catch (Exception ex)
@@ -299,6 +306,8 @@ namespace CattelSalasarMAUI.ViewModels
         [RelayCommand]
         public async Task ImageUploadToServer(object obj)
         {
+            UploadClaimAnimalImageCard.ClaimCardPageLoader = true;
+            UploadClaimAnimalImageCard.ClaimDetailsPageVisible = false; //Page UI visible False
             var paramiter = obj as ClaimAnimalImageCardClass;
             try
             {
@@ -312,7 +321,7 @@ namespace CattelSalasarMAUI.ViewModels
                 var TagNumber = paramiter.TagNumber;
 
                 var ImageList = await _claimImageDB.GetUploadImageDetails(LeadNo, ClaimProposalId, TagNumber);
-                
+
                
                 for (int i = 0; i < ImageList.Count(); i++)
                 {
@@ -332,10 +341,12 @@ namespace CattelSalasarMAUI.ViewModels
                 }
 
                 ClaimImageDetails.Add(images1);
-
+               
                 var retrunvalue = await _claimIntimationService.SaveClaimIntimationImagesOnServer(ClaimImageDetails);
+               
                 if (retrunvalue == true)
                 {
+
                     await App.Current.MainPage.DisplayAlert("Message", "Image Saved Sucessfuly", "OK");
                     
                     //Clearn Image Source
@@ -400,8 +411,9 @@ namespace CattelSalasarMAUI.ViewModels
                     await App.Current.MainPage.DisplayAlert("", "Claim Intimation Details Not Uploaded", "ok");
                    
                 }
-
-
+                var ImageLists = await _claimImageDB.DeleteImageDetailsByAnimalId(LeadNo, ClaimProposalId, TagNumber);
+                UploadClaimAnimalImageCard.ClaimCardPageLoader = false;
+                UploadClaimAnimalImageCard.ClaimDetailsPageVisible = true;
 
             }
             catch (Exception ex)

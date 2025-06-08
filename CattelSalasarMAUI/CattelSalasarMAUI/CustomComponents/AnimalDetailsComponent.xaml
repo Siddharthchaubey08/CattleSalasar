@@ -959,7 +959,8 @@
 
                         </Grid>
                         <!--IsVisible="{Binding ImageSaveToDbVisible}"-->
-                        <Button Grid.Row="13" Grid.Column="0" IsVisible="True" FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=SaveAnimalImageDetailsCommand}"
+                        <Button Grid.Row="13" Grid.Column="0" IsVisible="{Binding ImageSaveToDbVisible}"
+                                FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=SaveAnimalImageDetailsCommand}"
                             Text="Save Local Image" HeightRequest="40"  Padding="6" Margin="0, 0, 0, 0" BackgroundColor="#409336" TextColor="#FFF"/>
 
                         <Button  Grid.Row="14" Grid.Column="0" x:Name="GotoImageSave" FontAttributes="Bold" IsVisible="{Binding ImageSaveToServerVisible}" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProposalAnimalDetailsViewModel}}, Path=ImageSaveServerCommand}"

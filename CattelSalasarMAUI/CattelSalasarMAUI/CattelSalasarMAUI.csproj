@@ -1,9 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-		<RunAOTCompilation>false</RunAOTCompilation>
-	</PropertyGroup>
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-ios;net8.0-android</TargetFrameworks>
 		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
@@ -106,14 +102,14 @@
 		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
 	</ItemGroup>
 
-	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
-		<!-- Android Signing Configuration -->
+	<!--<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		--><!-- Android Signing Configuration --><!--
 		<AndroidKeyStore>True</AndroidKeyStore>
 		<AndroidSigningKeyStore>D:\Salasar_GitCode\CattleSalasar\CattelSalasarMAUI\key.keystore</AndroidSigningKeyStore>
 		<AndroidSigningKeyPass>Sid@123</AndroidSigningKeyPass>
 		<AndroidSigningStorePass>Sid@123</AndroidSigningStorePass>
 		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 	<ItemGroup>
 	  <Compile Update="Views\ClaimIntimation\UploadClaimIntimation.xaml.cs">
@@ -208,8 +204,10 @@
 	  </MauiXaml>
 	</ItemGroup>
 
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerExceptionCattelSalasarMAUIHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionCattelSalasarMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
-<PropertyGroup>
-		<PublishTrimmed>false</PublishTrimmed>
-	</PropertyGroup>
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties XamarinHotReloadDebuggerTimeoutExceptionCattelSalasarMAUIHideInfoBar="True" />
+		</VisualStudio>
+	</ProjectExtensions>
+
 </Project>

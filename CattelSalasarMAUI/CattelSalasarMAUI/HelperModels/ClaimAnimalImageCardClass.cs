@@ -12,6 +12,32 @@ namespace CattelSalasarMAUI.HelperModels
     public partial class ClaimAnimalImageCardClass : BaseViewModel, INotifyPropertyChanged
     {
        
+        private bool _claimCardPageLoader;
+        public bool ClaimCardPageLoader
+        {
+            get => _claimCardPageLoader;
+            set
+            {
+                if (_claimCardPageLoader != value)
+                {
+                    _claimCardPageLoader = value;
+                    OnPropertyChanged(nameof(ClaimCardPageLoader));
+                }
+            }
+        }
+        private bool _claimDetailsPageVisible;
+        public bool ClaimDetailsPageVisible
+        {
+            get => _claimDetailsPageVisible;
+            set
+            {
+                if (_claimDetailsPageVisible != value)
+                {
+                    _claimDetailsPageVisible = value;
+                    OnPropertyChanged(nameof(ClaimDetailsPageVisible));
+                }
+            }
+        }
         private string _claimProposalId;
         public string ClaimProposalId
         {
@@ -257,9 +283,9 @@ namespace CattelSalasarMAUI.HelperModels
             get => _eighthImage;
             set
             {
-                if (_seventhImage != value)
+                if (_eighthImage != value)
                 {
-                    _seventhImage = value;
+                    _eighthImage = value;
                     OnPropertyChanged(nameof(EighthImage));
                 }
             }

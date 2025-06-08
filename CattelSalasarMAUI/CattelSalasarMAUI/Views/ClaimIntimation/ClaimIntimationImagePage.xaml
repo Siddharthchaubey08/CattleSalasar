@@ -13,7 +13,7 @@
             <ScrollView  Grid.Row="1">
                 <StackLayout >
                     <!--<compont:AnimalDataCard BindingContext="{Binding ClaimAnimalCardView}" />-->
-                    <compont:ClaimAnimalImageCard BindingContext="{Binding ClaimAnimalImageCardView}" />
+                    <compont:ClaimAnimalImageCard BindingContext="{Binding ClaimAnimalImageCardView}" /> 
                 </StackLayout>
 
         </ScrollView>

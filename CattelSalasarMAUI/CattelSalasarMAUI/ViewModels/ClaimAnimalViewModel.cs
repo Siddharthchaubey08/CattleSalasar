@@ -86,6 +86,7 @@ namespace CattelSalasarMAUI.ViewModels
                 }
             }
         }
+        
 
         private bool _claimAnimalCardVisible;
         public bool ClaimAnimalCardVisible
@@ -124,7 +125,8 @@ namespace CattelSalasarMAUI.ViewModels
             _claimIntimationService = claimIntimationServic;
             ClaimAnimalCardView = new AnimalDataCardClass();
             ClaimAnimalImageCardView = new ClaimAnimalImageCardClass();
-            
+
+            ClaimAnimalImageCardView.ClaimDetailsPageVisible = true;
             ClaimAnimalGridDataView();
             CameraToggelClicked("CameraSelect");
         }
@@ -414,7 +416,7 @@ namespace CattelSalasarMAUI.ViewModels
                             else if (Text == "Back side of Animal")
                             {
                                
-                                ClaimAnimalImageCardView.FirstImage = ImageSource.FromStream(() => displayStream);
+                                ClaimAnimalImageCardView.FivethImage = ImageSource.FromStream(() => displayStream);
 
                             }
                             else if (Text == "Along with the Owner/ Proposer")
