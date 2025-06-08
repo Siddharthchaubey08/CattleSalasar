@@ -14,10 +14,15 @@ public partial class HomePage : ContentPage
     {
         base.OnAppearing();
 
+        if (BindingContext is HomePageViewModel viewModel)
+        {
+            viewModel.CurrentLocationsAsync();
+        }
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
         {
             DisplayAlert("No Internet", "You are currently offline!", "OK");
         }
-        
+
+
     }
 }

@@ -7,13 +7,6 @@ using Android.OS;
 using Android.Provider;
 using AndroidX.Core.App;
 using Plugin.Media;
-using Android.Telephony;
-using Android.Content;
-using Android.OS;
-using Android.App;
-using System;
-using System.Text.RegularExpressions;
-using Android.Mtp;
 
 namespace CattelSalasarMAUI
 {
