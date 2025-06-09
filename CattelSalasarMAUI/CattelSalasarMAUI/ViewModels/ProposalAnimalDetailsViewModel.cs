@@ -87,8 +87,7 @@ namespace CattelSalasarMAUI.ViewModels
             }
         }
 
-
-         private bool _editAnimalPageLoaderEnable;
+        private bool _editAnimalPageLoaderEnable;
         public bool EditAnimalPageLoaderEnable
         {
             get => _editAnimalPageLoaderEnable;
@@ -101,7 +100,6 @@ namespace CattelSalasarMAUI.ViewModels
                 }
             }
         }
-
 
         private AnimalDataModel _editAnimalSingeTapped;
         public AnimalDataModel EditAnimalSingeTapped
