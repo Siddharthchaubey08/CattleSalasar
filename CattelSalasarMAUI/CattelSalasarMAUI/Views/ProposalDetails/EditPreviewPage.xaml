@@ -50,7 +50,7 @@
                                 </Entry>-->
 
                                 <Entry x:Name="CalendarEntryBox" Margin="20,0,0,0" HeightRequest="40"
-                                       Text="{Binding SelectedDate, Mode=TwoWay}"
+                                       Text="{Binding SelectedDate, Mode=TwoWay}" Visual="None"
                                        Placeholder="Select a date" TextColor="IndianRed" FontSize="17"
                                        IsReadOnly="True" FontAttributes="Bold"
                                        HorizontalOptions="FillAndExpand">

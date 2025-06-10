@@ -471,7 +471,7 @@ namespace CattelSalasarMAUI.ViewModels
                     ProposalBasicDetailModel basicDetailModel = new ProposalBasicDetailModel();
                     if (ProposalBasicDetails.SurveyDate.ToString() != null)
                     {
-                        basicDetailModel.SurveyDate = ProposalBasicDetails.SurveyDate.ToString();
+                        basicDetailModel.SurveyDate = ProposalBasicDetails.SurveyDate.ToString("dd-MM-yyyy");
                     }
                     else
                     {
@@ -828,7 +828,7 @@ namespace CattelSalasarMAUI.ViewModels
                     basicDetailModel1.LeadNumber=EditLeadNumber;
                     if (EditProposalBasicDetails.SurveyDate.ToString() != null)
                     {
-                        basicDetailModel1.SurveyDate = EditProposalBasicDetails.SurveyDate.ToString();
+                        basicDetailModel1.SurveyDate = EditProposalBasicDetails.SurveyDate.ToString("dd-MM-yyyy");
                     }
                     else
                     {

@@ -209,6 +209,37 @@ namespace CattelSalasarMAUI.Services.Service
 
             return false;
         }
+        //public async Task<bool> SaveClaimIntimationImagesOnServer1(ObservableCollection<ClaimIntimationImageModel> claimImageDetails)
+        //{
+        //    try
+        //    {
+        //        if (claimImageDetails != null && claimImageDetails.Count > 0)
+        //        {
+        //            string jsonData = JsonConvert.SerializeObject(claimImageDetails);
+        //            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+        //            HttpResponseMessage response = await _client.PostAsync("Proposal/SaveClaimIntimationImagesList", content);
+
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                var jsonResponse = await response.Content.ReadAsStringAsync();
+        //                var result = JsonConvert.DeserializeObject<bool>(jsonResponse);
+        //                return result;
+        //            }
+        //            else
+        //            {
+        //                Console.WriteLine($"API Error: {response.StatusCode} - {await response.Content.ReadAsStringAsync()}");
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"An error occurred: {ex.Message}");
+        //    }
+
+        //    return false;
+        //}
+   
     }
 
 }

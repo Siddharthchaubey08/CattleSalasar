@@ -165,7 +165,7 @@ namespace CattelSalasarMAUI.ViewModels
             EditProposalAnimalDetails.TestComman = "EditAnimalDetails";
             EditAnimalPageLoaderEnable = false;
             ProposalAnimalCardView = new AnimalDataCardClass();
-            UploadBasicDetailsMethod(LeadNo);
+          //  UploadBasicDetailsMethod(LeadNo);
             EditAnimalCardList();
 
             //Image Toggle
@@ -405,7 +405,6 @@ namespace CattelSalasarMAUI.ViewModels
 
             }
 
-            
             // var data = await _editProposalService.GetEditProposalList(PropId);
             //Image Details
             foreach (var item1 in data.proposalImages)
@@ -424,7 +423,7 @@ namespace CattelSalasarMAUI.ViewModels
                 EditTappedImagelst.Add(proposalImage);
             }
 
-            var imageName = EditTappedImagelst.Where(x => x.CompassDegrees == EditSpecise);
+            var imageName = EditTappedImagelst.Where(x => x.CompassDegrees == EditSpecise && x.PropId== ProposelId);
             foreach (var name in imageName)
             {
                await FetchImage(name.ImageName, name.ImageCapson);
@@ -440,9 +439,9 @@ namespace CattelSalasarMAUI.ViewModels
                 // Define the base URL
                 //var urlbase = GlobalVariables.appUrl+ $"api/FileManager/api/image/{imageName}";
                 // var imageUrl = $"http://1.22.180.122:9191/api/FileManager/api/image/{imageName}";
-                var imageUrl = $"http://adeptinfo.co.in:4329/api/FileManager/api/image/{imageName}";
+               // var imageUrl = $"http://adeptinfo.co.in:4329/api/FileManager/api/image/{imageName}";
                 //var imageUrl = $"https://api.salasarservices.in/api/FileManager/api/image/{imageName}";
-               // var imageUrl = $"http://13.200.151.26:8085/api/FileManager/api/image/{imageName}";  //Clint_API
+                var imageUrl = $"http://13.200.151.26:8085/api/FileManager/api/image/{imageName}";  //Clint_API
 
                 // Create an HttpClient instance to fetch the image
                 using (var httpClient = new HttpClient())

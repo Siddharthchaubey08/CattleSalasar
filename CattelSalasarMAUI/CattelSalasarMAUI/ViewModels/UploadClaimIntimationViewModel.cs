@@ -262,7 +262,7 @@ namespace CattelSalasarMAUI.ViewModels
                         UploadClaimAnimalImageCard.EighthImage = imageSource;
 
                     }
-                    else if (item.ImageCapson == "Aadhar card")
+                    else if (item.ImageCapson == "Aadhar Card")
                     {
                         UploadClaimAnimalImageCard.NinthImage = imageSource;
                         
@@ -313,7 +313,7 @@ namespace CattelSalasarMAUI.ViewModels
             {
 
                 ObservableCollection<ClaimIntimationImageModel> ClaimImageDetails = new ObservableCollection<ClaimIntimationImageModel>();
-                ClaimIntimationImageModel images1 = new ClaimIntimationImageModel();
+                
                 ClaimImageDetails.Clear();
 
                 var LeadNo = paramiter.LeadNumber;
@@ -325,23 +325,25 @@ namespace CattelSalasarMAUI.ViewModels
                
                 for (int i = 0; i < ImageList.Count(); i++)
                 {
-                    images1.ImgesPath = ImageList.ToArray()[i].ImgesPath;
-                    images1.ImageName = ImageList.ToArray()[i].ImageName;
-                    images1.ClaimIntimationId = ImageList.ToArray()[i].ClaimIntimationId;
-                    images1.CompassDegrees = ImageList.ToArray()[i].CompassDegrees;
-                    images1.CreatedDate = ImageList.ToArray()[i].CreatedDate; //tdata.ToString();
-                    images1.Latitude = ImageList.ToArray()[i].Latitude;
-                    images1.Longitude = ImageList.ToArray()[i].Longitude;
-                    images1.LeadNumber = ImageList.ToArray()[i].LeadNumber;
-                    images1.ClaimProposalId = ImageList.ToArray()[i].ClaimProposalId;
-                    images1.TagNumber = ImageList.ToArray()[i].TagNumber;
-                    images1.TypeOfAnimal = ImageList.ToArray()[i].TypeOfAnimal;
-                    images1.ImageCapson = ImageList.ToArray()[i].ImageCapson;
-                    images1.TimeStamp = ImageList.ToArray()[i].TimeStamp;
+                    ClaimIntimationImageModel images1 = new ClaimIntimationImageModel()
+                    {
+                        ImgesPath = ImageList.ToArray()[i].ImgesPath,
+                        ImageName = ImageList.ToArray()[i].ImageName,
+                        ClaimIntimationId = ImageList.ToArray()[i].ClaimIntimationId,
+                        CompassDegrees = ImageList.ToArray()[i].CompassDegrees,
+                        CreatedDate = ImageList.ToArray()[i].CreatedDate, //tdata.ToString();
+                        Latitude = ImageList.ToArray()[i].Latitude,
+                        Longitude = ImageList.ToArray()[i].Longitude,
+                        LeadNumber = ImageList.ToArray()[i].LeadNumber,
+                        ClaimProposalId = ImageList.ToArray()[i].ClaimProposalId,
+                        TagNumber = ImageList.ToArray()[i].TagNumber,
+                        TypeOfAnimal = ImageList.ToArray()[i].TypeOfAnimal,
+                        ImageCapson = ImageList.ToArray()[i].ImageCapson,
+                        TimeStamp = ImageList.ToArray()[i].TimeStamp,
+                    };
+                    ClaimImageDetails.Add(images1);
                 }
 
-                ClaimImageDetails.Add(images1);
-               
                 var retrunvalue = await _claimIntimationService.SaveClaimIntimationImagesOnServer(ClaimImageDetails);
                
                 if (retrunvalue == true)
