@@ -492,7 +492,7 @@ namespace CattelSalasarMAUI.ViewModels
                         EditProposalAnimalDetails.EighthImage = imageSource;
 
                     }
-                    else if (imageCapson == "Aadhar card")
+                    else if (imageCapson == "Aadhar Card")
                     {
                         EditProposalAnimalDetails.NinthImage = imageSource;
 
@@ -692,7 +692,7 @@ namespace CattelSalasarMAUI.ViewModels
                     UploadProposalDetailsView.EighthImage = imageList.ToArray()[i].ImgesPath;
 
                 }
-                else if (imageList.ToArray()[i].ImageCapson == "Aadhar card")
+                else if (imageList.ToArray()[i].ImageCapson == "Aadhar Card")
                 {
                     UploadProposalDetailsView.NinthImage = imageList.ToArray()[i].ImgesPath;
 
