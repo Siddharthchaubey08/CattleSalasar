@@ -70,7 +70,6 @@ namespace CattelSalasarMAUI.HelperModels
 
         private IntimationCardModel _selectedClaimIntimation;
         public IntimationCardModel SelectedClaimIntimation
-
         {
             get => _selectedClaimIntimation;
             set

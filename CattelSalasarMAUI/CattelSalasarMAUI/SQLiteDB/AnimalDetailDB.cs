@@ -49,14 +49,12 @@ namespace CattelSalasarMAUI.SQLiteDB
             }
 
         }
-
         public async Task<List<AnimalDataModel>> GetAnimalProposal()
         {
             var data =await Database.Table<AnimalDataModel>().ToArrayAsync();
             return (from u in data
                     select u).ToList();
         }
-
         public async Task<string> AddAnimalDetails(AnimalDataModel animalDataModel)
         {
             await Init();

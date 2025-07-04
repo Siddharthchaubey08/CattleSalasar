@@ -8,7 +8,7 @@
         <StackLayout x:Name="absLayout" Margin="0,0,0,0" IsVisible="True" BackgroundColor="White">
             <Grid RowDefinitions="auto,*"  HorizontalOptions="FillAndExpand" IsVisible="True" BackgroundColor="White"  VerticalOptions="FillAndExpand" >
                
-                <Image Grid.Row="0" Grid.Column="0"  Margin="0,1,0,0" Source="@drawable/loginimage.jpeg"  Aspect="AspectFill" HeightRequest="150" ></Image>
+                <Image Grid.Row="0" Grid.Column="0"  Margin="0,1,0,0" Source="loginimage.jpeg"  Aspect="AspectFill" HeightRequest="150" ></Image>
 
                 <Frame Grid.Row="1" Grid.Column="0"  BackgroundColor="White" Margin="20,30,20,120" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" >
                     <Grid RowDefinitions="36,18,auto,auto,auto,auto,auto,auto"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15" Padding="20" BackgroundColor="White">
@@ -45,6 +45,7 @@
                         </Grid>
 
                     </Grid>
+                
                 </Frame>
 
                 <!--PageLoder-->

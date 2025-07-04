@@ -95,7 +95,8 @@ namespace CattelSalasarMAUI.ViewModels
             }
 
         }
-         [RelayCommand]
+        
+        [RelayCommand]
         public async Task ExecuteRegistration()
         {
             try

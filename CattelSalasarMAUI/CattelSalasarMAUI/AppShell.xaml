@@ -22,7 +22,7 @@
     FlyoutBackdrop="Black">
 
     <!-- Shell Resources for Styling -->
-    <Shell.Resources>
+    <!--<Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="FlyoutItemTitleStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="Black" />
@@ -35,7 +35,49 @@
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
+    </Shell.Resources>-->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <!-- Define color resources -->
+            <Color x:Key="Primary">#512BD4</Color>
+
+            <!-- Base style for Shell visual elements -->
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#a155e7" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#FFFFFF" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarTitleColor" Value="#FFFFFF" />
+            </Style>
+
+            <!-- Apply to all ShellItems -->
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" ApplyToDerivedTypes="True" />
+
+            <!-- Style for flyout menu labels -->
+            <Style x:Key="FlyoutItemLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <!-- Flyout item template -->
+            <DataTemplate x:Key="FlyoutItemTemplate">
+                <Grid Padding="10" RowDefinitions="*,auto" ColumnDefinitions="Auto,*" HorizontalOptions="StartAndExpand" VerticalOptions="Center" ColumnSpacing="17" RowSpacing="8">
+                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding FlyoutIcon}" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Title}" FontSize="18" FontAttributes="Bold" Style="{StaticResource FlyoutItemLabelStyle}" />
+                    <!--<BoxView Grid.Row="1" Margin="0,10,0,0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Black" HeightRequest="1"></BoxView>-->
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
     </Shell.Resources>
+
+    <!-- Apply custom flyout template -->
+  
 
     <!-- Set the ItemTemplate -->
     <Shell.ItemTemplate>
@@ -55,28 +97,28 @@
                       Title="Home Page" />
     </FlyoutItem>
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Create Proposal" Icon="home.png" >
-        <ShellContent Route="createProposal" Icon="home.png" 
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Create Proposal" >
+        <ShellContent Route="createProposal" Icon="surveyicon.png" 
                       ContentTemplate="{DataTemplate local1:CreateProposal}"
                       Title="Create Proposal" />
     </FlyoutItem>
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Upload Proposal" Icon="home.png" >
-            <ShellContent Route="uploadPreviewPage" Icon="tabfeed.png"
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Upload Proposal" >
+        <ShellContent Route="uploadPreviewPage" Icon="surveyicon.png"
                       ContentTemplate="{DataTemplate local1:UploadPreviewPage}"
                       Title="Upload Proposal" />
     </FlyoutItem>
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Edit Proposal" Icon="home.png" >
-        <ShellContent Route="editPreviewPage" Icon="tabfeed.png"
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Edit Proposal" >
+        <ShellContent Route="editPreviewPage" Icon="surveyicon.png"
                       ContentTemplate="{DataTemplate local1:EditPreviewPage}"
                       Title="Edit Proposal" />
     </FlyoutItem>
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Claim Intimation"  FlyoutIcon="tabfeed.png">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Claim Intimation" >
         <ShellContent Route="cardClaimIntimation" Icon="tabfeed.png"
                       ContentTemplate="{DataTemplate local2:CardClaimIntimation}"
                       Title="Claim Intimation" />
     </FlyoutItem>
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Upload Claim Intimation"  FlyoutIcon="tabfeed.png">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Title="Upload Claim Intimation"  >
         <ShellContent Route="uploadClaimIntimation1" Icon="tabfeed.png"
                       ContentTemplate="{DataTemplate local2:UploadClaimIntimationCard}"
                       Title="Upload Claim Intimation" />
@@ -93,7 +135,7 @@
               Command="{Binding ExecuteLogout}" />-->
     <Shell.FlyoutFooter>
         <Grid RowDefinitions="*,*" BackgroundColor="White" Margin="0,-30,0,0" Padding="30" >
-            <Label Grid.Row="0" Text="Application Version- 1.3 V" FontSize="16" TextColor="IndianRed" FontAttributes="Bold"
+            <Label Grid.Row="0" Text="Application Version- 1.4 V" FontSize="16" TextColor="IndianRed" FontAttributes="Bold"
                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,10,0,0" />
             <Button Grid.Row="1" Text="User_Logout" FontSize="16"
                 TextColor="white" FontAttributes="Bold"

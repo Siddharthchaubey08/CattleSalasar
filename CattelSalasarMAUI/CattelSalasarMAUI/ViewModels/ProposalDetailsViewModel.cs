@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
@@ -224,6 +225,14 @@ namespace CattelSalasarMAUI.ViewModels
                 EditProposalId = item.proposerDetailModel.ProposalId;
                 EditLeadNumber = item.proposerDetailModel.LeadNumber;
                 EditProposalBasicDetails.SurveyDate = DateTime.Parse(item.proposerDetailModel.SurveyDate.Replace("?", "").Trim());
+
+                //var Tempdate = item.proposerDetailModel.SurveyDate.Replace("?", "").Trim().Split(' ')[0];
+                //EditProposalBasicDetails.SurveyDate = Convert.ToDateTime(Tempdate);
+
+                //EditProposalBasicDetails.SurveyDate = DateTime.ParseExact(
+                //    item.proposerDetailModel.SurveyDate.Split(' ')[0], "d/M/yyyy",CultureInfo.CurrentCulture);
+
+
                 EditProposalBasicDetails.CustomerName = item.proposerDetailModel.CustomerName;
                 if (item.proposerDetailModel.CustomerGender != null)
                 {

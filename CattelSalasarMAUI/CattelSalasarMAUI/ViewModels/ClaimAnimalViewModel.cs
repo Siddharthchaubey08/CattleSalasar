@@ -121,7 +121,7 @@ namespace CattelSalasarMAUI.ViewModels
         ClaimImageDB _claimImageDB = new ClaimImageDB();
         public ClaimAnimalViewModel(IEditProposalService editProposalService, IClaimIntimationService claimIntimationServic)
         {
-             _editProposalService= editProposalService;
+            _editProposalService= editProposalService;
             _claimIntimationService = claimIntimationServic;
             ClaimAnimalCardView = new AnimalDataCardClass();
             ClaimAnimalImageCardView = new ClaimAnimalImageCardClass();
